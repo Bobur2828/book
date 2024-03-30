@@ -76,3 +76,5 @@ def wishlist(request):
 
 def test(request):
     return render(request, 'my_app/wishlist.html')
+
+boldimi ha nma qile endi boldi shulardi hammasini uloring base qime qoyorin ozim togirlab chiqyapman hop
