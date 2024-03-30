@@ -73,3 +73,6 @@ def team(request):
 
 def wishlist(request):
     return render(request, 'my_app/wishlist.html')
+
+def test(request):
+    return render(request, 'my_app/wishlist.html')
