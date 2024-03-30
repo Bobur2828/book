@@ -1,7 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Slider
 def index(request):
-    return render(request, 'my_app/index.html')
+    sliders=Slider.objects.all()
+    data={
+        "sliders":sliders
+    }
+
+    return render(request, 'my_app/index.html', context=data)
 
 def about(request):
     return render(request, 'my_app/about.html')
