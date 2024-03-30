@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Slider
+from .models import Slider,Books,Category
 def index(request):
     sliders=Slider.objects.all()
+    books=Books.objects.all()
     data={
-        "sliders":sliders
+        "sliders":sliders,
+        "books":books
     }
 
     return render(request, 'my_app/index.html', context=data)
@@ -58,7 +60,11 @@ def portfolio_three_column(request):
     return render(request, 'my_app/portfolio-three-column.html')
 
 def shop_grid(request):
-    return render(request, 'my_app/shop-grid.html')
+    categorys=Category.objects.all()
+    data={
+        "categorys":categorys
+    }
+    return render(request, 'my_app/shop-grid.html', context=data)
 
 def shop_left_sidebar(request):
     return render(request, 'my_app/shop-left-sidebar.html')
