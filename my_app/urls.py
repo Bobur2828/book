@@ -4,6 +4,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('', views.index, name='index'),
     path('about/', views.about, name='about'),
+    path('blog/', views.blog, name='blog'),
     path('blog-details/', views.blog_details, name='blog_details'),
     path('blog-left-sidebar/', views.blog_left_sidebar, name='blog_left_sidebar'),
     path('blog-no-sidebar/', views.blog_no_sidebar, name='blog_no_sidebar'),

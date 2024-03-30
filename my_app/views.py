@@ -6,16 +6,17 @@ def index(request):
 def about(request):
     return render(request, 'my_app/about.html')
 
+
+def blog(request):
+    return render(request, 'my_app/blog.html')
 def blog_details(request):
-    return render(request, 'my_app/blog_details')
+    return render(request, 'my_app/blog_details.html')
 
 def blog_left_sidebar(request):
     return render(request, 'my_app/blog-left-sidebar.html')
 
 def blog_no_sidebar(request):
     return render(request, 'my_app/blog-no-sidebar.html')
-
-
 
 def cart(request):
     return render(request, 'my_app/cart.html')
