@@ -4,12 +4,22 @@ from .models import Slider,Books,Category
 def index(request):
     sliders=Slider.objects.all()
     books=Books.objects.all()
-    data={
+
+    if 'qidiruv' in request.POST:
+        qidiruv = request.POST['qidiruv']
+
+        books = Books.objects.filter(name__contains=qidiruv)
+
+    else:
+        books = books
+
+
+    context = {
         "sliders":sliders,
         "books":books
     }
 
-    return render(request, 'my_app/index.html', context=data)
+    return render(request, 'my_app/index.html', context)
 
 def about(request):
     return render(request, 'my_app/about.html')
@@ -89,3 +99,18 @@ def wishlist(request):
 
 def test(request):
     return render(request, 'my_app/wishlist.html')
+
+
+def searchpage(request):
+    if 'qidiruv' in request.GET:
+        qidiruv = request.GET['qidiruv']
+
+        data = Books.objects.filter(name__icontains=qidiruv)
+        print(data)
+    else:
+        data = Books.objects.all()
+        print(data)
+    context = {
+        'data': data
+    }
+    return render(request, 'my_app/index.html', context)
