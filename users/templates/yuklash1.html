@@ -32,18 +32,37 @@
                                 <div class="single-contact-form space-between">
                                     <input type="text" name="name"  placeholder="Kitob nomini kiriting..."/>
                                 </div>
-                                <div class="single-contact-form space-between">
-                                    <input type="email" name="email" placeholder="Email*">
-                                    <input type="text" name="website" placeholder="Website*">
-                                </div>
-                                <div class="single-contact-form">
-                                    <input type="text" name="subject" placeholder="Subject*">
-                                </div>
+
                                 <div class="single-contact-form message">
-                                    <textarea name="message" placeholder="Type your message here.."></textarea>
+                                    <textarea name="describtion" placeholder="Kitobning haqida kiriting..."></textarea>
+                                </div>
+								<h4>Kitobni yuklang</h4>
+								<div class="single-contact-form space-between">
+                                    <input type="file" name="pdf"  placeholder="Fayl"/>
+                                </div>
+								<h4>Kitobni Rasmini Kiriting</h4>
+								<div class="single-contact-form space-between">
+                                    <input type="file" name="photo"  placeholder="Rasm"/>
+                                </div>
+								<div class="single-contact-form space-between">
+									<h3>Kitob turini tanlang</h3>
+									<select name="category" style="padding:10px; width:450px; border-radius:25px;" >
+										{% for i in category %}
+											 <option  value="{{ i.id }}">{{ i.name }}</option>
+										{% endfor %}
+									</select>
+                                </div>
+								<div class="single-contact-form space-between">
+                                     <h3>Muallifni  tanlang</h3>
+									<select name="author" style="padding:10px; width:450px; border-radius:25px;" >
+										{% for p in author %}
+											 <option  value="{{ p.id }}">{{ p.name }}</option>
+										{% endfor %}
+											 <option  value="{{ p.id }}">Boshqa</option>
+									</select>
                                 </div>
                                 <div class="contact-btn">
-                                    <button type="submit">Send Email</button>
+                                    <button type="submit">Joylash</button>
                                 </div>
                             </form>
                         </div> 
