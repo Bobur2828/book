@@ -48,6 +48,8 @@ def user_logout(request):
     logout(request)
     return redirect('index')
 
+from django.shortcuts import get_object_or_404
+
 def Yuklash(request):
     context = {
         'category': Category.objects.all(),
@@ -56,16 +58,26 @@ def Yuklash(request):
     if request.method == "POST":
         r = request.POST
         f = request.FILES
-
-        category = r['category']
+        print(r)
+        category_id = r['category']
         photo = f['photo']
         name = r['name']
         author = r['author']
-        describtion = r['describtion']
+        description = r['description']
         pdf = f['pdf']
+        muallif = r['muallif']
+        
+        if author == '':
+            muallif_base = Author.objects.create(name=muallif)
+            author_id = muallif_base.id
+            avtor_id = get_object_or_404(Author, id=author_id)
 
-        Books.objects.create(category_id=category, name=name, author_id=author, photo=photo, pdf=pdf, describtion=describtion)
-        #Author.objects.create(name=names)
-        return redirect('/')
+            category = get_object_or_404(Category, id=category_id)
+            yaratish = Books.objects.create(category=category, name=name, author=avtor_id, photo=photo, pdf=pdf, description=description)
+            return redirect('/')
+        else:
+            category = get_object_or_404(Category, id=category_id)
+            Books.objects.create(category=category, name=name, author_id=author, photo=photo, pdf=pdf, description=description)
+            return redirect('/')
     else:
         return render(request, 'yuklash1.html', context)

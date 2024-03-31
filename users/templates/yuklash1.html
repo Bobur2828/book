@@ -34,7 +34,7 @@
                                 </div>
 
                                 <div class="single-contact-form message">
-                                    <textarea name="describtion" placeholder="Kitobning haqida kiriting..."></textarea>
+                                    <textarea name="description" placeholder="Kitobning haqida kiriting..."></textarea>
                                 </div>
 								<h4>Kitobni yuklang</h4>
 								<div class="single-contact-form space-between">
@@ -60,6 +60,10 @@
 										{% endfor %}
 											 <option  value="{{ p.id }}">Boshqa</option>
 									</select>
+                                </div>
+                                <div class="single-contact-form space-between">
+                                    <h3>Muallifni  tanlang</h3>
+                                    <input type="text" name="muallif"  placeholder="Rasm"/>
                                 </div>
                                 <div class="contact-btn">
                                     <button type="submit">Joylash</button>

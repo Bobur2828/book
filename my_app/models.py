@@ -2,7 +2,7 @@ from django.db import models
 
 class Books(models.Model):
     name=models.CharField(max_length=200, verbose_name='Kitob nomi')
-    describtion=models.TextField(max_length=1000, verbose_name="Kitob haqida ma'lumot")
+    description=models.TextField(max_length=1000, verbose_name="Kitob haqida ma'lumot")
 
     pdf=models.FileField(upload_to='books/pdf', verbose_name="Kitob faylini yuklash")
     photo=models.ImageField(upload_to='books/photo', verbose_name="kitob rasmini kiriting")
