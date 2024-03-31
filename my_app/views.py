@@ -111,7 +111,8 @@ def wishlist(request):
 
 def test(request):
     return render(request, 'my_app/wishlist.html')
-
+def profile(request):
+    return render(request, 'my_app/snippets.html')
 
 def searchpage(request):
     if 'qidiruv' in request.GET:

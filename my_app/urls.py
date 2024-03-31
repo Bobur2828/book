@@ -27,6 +27,7 @@ urlpatterns = [
     path('single-product/', views.single_product, name='single_product'),
     path('team/', views.team, name='team'),
     path('wishlist/', views.wishlist, name='wishlist'),
+    path('profile/', views.profile, name='profile'),
     path('search/', views.searchpage, name='searchpage'),
 
 
