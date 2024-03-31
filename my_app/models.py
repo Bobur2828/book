@@ -34,3 +34,15 @@ class Slider(models.Model):
 
     def __str__(self):
         return self.text1
+
+class Ourteam(models.Model):
+    fi = models.CharField(max_length=80)  #Jamoa azolarini ismi familyasi
+    photo = models.ImageField(upload_to='team/image', verbose_name="slider rasmini kiriting")
+    occupation = models.CharField(max_length=70)
+    twitter = models.CharField(max_length=110)
+    facebook = models.CharField(max_length=170)
+    linkedin = models.CharField(max_length=170)
+    instagram = models.CharField(max_length=170)
+
+    def __str__(self):
+        return self.fi

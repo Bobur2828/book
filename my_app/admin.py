@@ -1,7 +1,12 @@
 from django.contrib import admin
-from .models import Books,Category,Author,Slider
+from .models import Books,Category,Author,Slider, Ourteam
 
 admin.site.register(Slider)
+
+@admin.register(Ourteam)
+class OurteamAdmin(admin.ModelAdmin):
+    list_display = ('id', 'fi')
+
 @admin.register(Books)
 class BooksAdmin(admin.ModelAdmin):
     list_display = ('id', 'name','author','category','pdf')
