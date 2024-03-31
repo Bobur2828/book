@@ -44,7 +44,7 @@
 					<div class="product product__style--3">
 						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 							<div class="product__thumb">
-								<a class="first__img" href="{% url 'detail' product.id %}"><img src="{{ product.photo.url}}" alt="product image"></a>
+								<a class="first__img" href="{% url 'books:detail' product.id %}"><img src="{{ product.photo.url}}" alt="product image"></a>
 								{% comment %} <a class="second__img animation1" href="{{ product.url }}"><img src="{% static 'my_app/images/download.png' %}" alt="product image"></a> {% endcomment %}
 								{% comment %} {% if product.is_bestseller %}
 								<div class="hot__box">

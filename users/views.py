@@ -19,7 +19,7 @@ def user_login(request):
             if user is not None:
                 login(request,user)
                 messages.success(request,(f" Salom {user.first_name} {user.last_name} sizni yana ko'rib turganimizdan hursandmiz"))
-                return redirect('index')
+                return redirect('books:index')
             else:
                 messages.error(request,("Login yoki parolni notogri kiritdingiz  iltimos qayta urinib koring "))
 
@@ -47,7 +47,7 @@ def user_register(request):
 
 def user_logout(request):
     logout(request)
-    return redirect('index')
+    return redirect('books:index')
 
 from django.shortcuts import get_object_or_404
 
