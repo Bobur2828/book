@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Slider,Books,Category
+from .models import Slider,Books,Category, Ourteam
 def index(request):
     sliders=Slider.objects.all()
     books=Books.objects.all()
@@ -92,7 +92,14 @@ def single_product(request):
     return render(request, 'my_app/single-product.html')
 
 def team(request):
-    return render(request, 'my_app/team.html')
+
+    teamm = Ourteam.objects.all()
+
+    context = {
+        'teamm' : teamm
+    }
+
+    return render(request, 'my_app/team.html', context)
 
 def wishlist(request):
     return render(request, 'my_app/wishlist.html')
