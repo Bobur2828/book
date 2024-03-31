@@ -6,7 +6,8 @@ from django.views import View
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse,reverse_lazy
-
+from my_app.models import Category, Books, Author
+import requests
 
 def user_login(request):
     if request.method == 'POST':
@@ -46,3 +47,26 @@ def user_register(request):
 def user_logout(request):
     logout(request)
     return redirect('index')
+
+def Yuklash(request):
+    context = {
+        'category': Category.objects.all(),
+    }
+    if request.method == "POST":
+        r = request.POST
+        f = request.FILES
+
+        category = r['category']
+        photo = f['photo']
+        name = r['name']
+        author = r['author']
+        describtion = r['describtion']
+        pdf = f['pdf']
+
+        Books.objects.create(category_id=category, name=name, photo=photo, pdf=pdf, describtion=describtion
+                            )
+        Author.objects.create(name=author)
+
+        return redirect('/')
+    else:
+        return render(request, 'login/yuklash.html', context)

@@ -1,0 +1,79 @@
+{%  load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static '/my_app/login/css/style.css'%}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Kitob Yuklash</h2>
+                        <form method="POST" class="register-form"  action="/users/yuklash/" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label ><i class="zmdi zmdi-name"></i></label>
+                                <input type="text" name="name"  placeholder="Kitob nomini kiriting..."/>
+                            </div>
+
+                            <div class="form-group">
+                                <label ><i class="zmdi zmdi-name"></i></label>
+                                <input type="text" name="describtion"  placeholder="Kitobning haqida kiriting..."/>
+                            </div>
+                            <h4>Kitobni yuklang</h4>
+                            <div class="form-group">
+                                <label ><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="file" name="pdf"  placeholder="Faly"/>
+                            </div>
+                            <h4>Kitobning rasmini yuklang</h4>
+                            <div class="form-group" >
+                                <label  ><i class="zmdi zmdi-image"></i></label>
+                                <input   type="file" name="photo"  placeholder="Rasm"/>
+                            </div>
+                            <div class="form-group">
+                                <h3>Kitob turini tanlang</h3>
+                                <select name="category" style="padding:10px; width:450px; border-radius:25px;" >
+                                    {% for i in category %}
+                                         <option  value="{{ i.id }}">{{ i.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label ><i class="zmdi zmdi-lock"></i></label>
+                                <input type="text" name="author" placeholder="Muallif ismini kiriting..."/>
+                            </div>
+
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Yuklash"/>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <!-- JS -->
+    <script src="{% static '/my_app/login/vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static '/my_app/login/js/main.js'%}"></script>
+</body>
+</html>
