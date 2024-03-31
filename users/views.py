@@ -51,6 +51,7 @@ def user_logout(request):
 def Yuklash(request):
     context = {
         'category': Category.objects.all(),
+        'author': Author.objects.all()
     }
     if request.method == "POST":
         r = request.POST
@@ -63,9 +64,7 @@ def Yuklash(request):
         describtion = r['describtion']
         pdf = f['pdf']
 
-        Books.objects.create(category_id=category, name=name, photo=photo, pdf=pdf, describtion=describtion
-                            )
-        Author.objects.create(name=author)
+        Books.objects.create(category_id=category, name=name, author_id=author, photo=photo, pdf=pdf, describtion=describtion)
 
         return redirect('/')
     else:

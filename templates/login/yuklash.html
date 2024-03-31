@@ -55,8 +55,13 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label ><i class="zmdi zmdi-lock"></i></label>
-                                <input type="text" name="author" placeholder="Muallif ismini kiriting..."/>
+                                <h3>Muallifni  tanlang</h3>
+                                <select name="author" style="padding:10px; width:450px; border-radius:25px;" >
+                                    {% for p in author %}
+                                         <option  value="{{ p.id }}">{{ p.name }}</option>
+                                    {% endfor %}
+                                         <option  value="{{ p.id }}">Boshqa</option>
+                                </select>
                             </div>
 
                             <div class="form-group form-button">
