@@ -4,22 +4,27 @@ from .models import Slider,Books,Category, Ourteam
 def index(request):
     sliders=Slider.objects.all()
     books=Books.objects.all()
-
-    if 'qidiruv' in request.POST:
-        qidiruv = request.POST['qidiruv']
-
-        books = Books.objects.filter(name__contains=qidiruv)
-
-    else:
-        books = books
-
-
-    context = {
+    search=request.GET.get('q','')
+    if search:
+        books=Books.objects.filter(name__icontains=search)
+        data = {
         "sliders":sliders,
-        "books":books
+        "books":books,
     }
 
-    return render(request, 'my_app/index.html', context)
+        
+    else:
+        data = {
+        "sliders":sliders,
+        "books":books,
+    }
+        
+
+
+
+    
+
+    return render(request, 'my_app/index.html', context=data)
 
 def about(request):
     return render(request, 'my_app/about.html')
