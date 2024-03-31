@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+app_name = 'books'
 urlpatterns = [
     path('', views.index, name='index'),
     path('', views.index, name='index'),
@@ -24,12 +25,11 @@ urlpatterns = [
     path('shop-list/', views.shop_list, name='shop_list'),
     path('shop-no-sidebar/', views.shop_no_sidebar, name='shop_no_sidebar'),
     path('shop-right-sidebar/', views.shop_right_sidebar, name='shop_right_sidebar'),
-    path('single-product/', views.single_product, name='single_product'),
     path('team/', views.team, name='team'),
     path('wishlist/', views.wishlist, name='wishlist'),
-    path('profile/', views.profile, name='profile'),
     path('search/', views.searchpage, name='searchpage'),
-
+    path('detail/<int:id>/', views.BooksDetailView.as_view(), name='detail'),
+    path('add_comment/<int:id>/', views.AddCommentView.as_view(),name='AddCommentView'),
 
 
 ]

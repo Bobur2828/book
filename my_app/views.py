@@ -1,6 +1,12 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.views.generic import ListView, View
+from .forms import AddCommentForm
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Slider,Books,Category, Ourteam
+from .models import Slider,Books,Category, Ourteam,Comment
 def index(request):
     sliders=Slider.objects.all()
     books=Books.objects.all()
@@ -93,8 +99,7 @@ def shop_no_sidebar(request):
 def shop_right_sidebar(request):
     return render(request, 'my_app/shop-right-sidebar.html')
 
-def single_product(request):
-    return render(request, 'my_app/single-product.html')
+
 
 def team(request):
 
@@ -111,8 +116,7 @@ def wishlist(request):
 
 def test(request):
     return render(request, 'my_app/wishlist.html')
-def profile(request):
-    return render(request, 'my_app/snippets.html')
+
 
 def searchpage(request):
     if 'qidiruv' in request.GET:
@@ -127,3 +131,32 @@ def searchpage(request):
         'data': data
     }
     return render(request, 'my_app/index.html', context)
+
+
+# def single_product(request, id):
+#     books=Books.objects.filter(id=id)
+#     data={
+#         "books":books
+#     }
+#     return render(request, 'my_app/single-product.html',context=data)
+
+class BooksDetailView(View):
+    def get(self, request, id):
+        form=AddCommentForm()
+        books=Books.objects.filter(id=id)
+        return render(request, 'my_app/single-product.html',{'form':form,'books':books})
+
+class AddCommentView(LoginRequiredMixin,View):
+    def post(self, request,id):
+        form=AddCommentForm(request.POST)
+        books=Books.objects.filter(id=id)
+        if form.is_valid():
+            books=Books.objects.get(id=id)
+            Comment.objects.create(
+                user=request.user,
+                books=books,
+                comment=form.cleaned_data['comment'],
+                stars_given=form.cleaned_data['stars_given'],
+            )
+            return redirect(reverse('books:detail', kwargs={'id':books.id}))
+        return render(request, 'my_app/single-product.html',{'form':form,'books':books})

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Books,Category,Author,Slider, Ourteam
+from .models import Books,Category,Author,Slider, Ourteam,Comment
 
 admin.site.register(Slider)
 
@@ -32,6 +32,11 @@ class AuthorAdmin(admin.ModelAdmin):
     ordering = ('name',)
 
     list_per_page = 10
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('user', 'comment','books')
+
 
 
 

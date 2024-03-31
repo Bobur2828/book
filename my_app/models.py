@@ -1,5 +1,7 @@
 from django.db import models
-
+from django.core.validators import MinValueValidator, MaxValueValidator
+from users.models import User
+from django.utils import timezone
 class Books(models.Model):
     name=models.CharField(max_length=200, verbose_name='Kitob nomi')
     description=models.TextField(max_length=1000, verbose_name="Kitob haqida ma'lumot")
@@ -46,3 +48,13 @@ class Ourteam(models.Model):
 
     def __str__(self):
         return self.fi
+    
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    books = models.ForeignKey(Books, on_delete=models.CASCADE, related_name="comments")
+    comment = models.TextField()
+    stars_given = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], null=True, blank=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    def __str__(self):
+        return f"{self.user.username} commented to {self.books.name} and gave {self.stars_given} stars"
