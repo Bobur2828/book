@@ -69,4 +69,4 @@ def Yuklash(request):
         Author.objects.create(name=names)
         return redirect('/')
     else:
-        return render(request, 'login/yuklash.html', context)
+        return render(request, 'yuklash1.html', context)
