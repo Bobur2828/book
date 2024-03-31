@@ -61,11 +61,12 @@ def Yuklash(request):
         photo = f['photo']
         name = r['name']
         author = r['author']
+        names = r['names']
         describtion = r['describtion']
         pdf = f['pdf']
 
         Books.objects.create(category_id=category, name=name, author_id=author, photo=photo, pdf=pdf, describtion=describtion)
-
+        Author.objects.create(name=names)
         return redirect('/')
     else:
         return render(request, 'login/yuklash.html', context)

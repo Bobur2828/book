@@ -40,78 +40,23 @@
 		<header id="wn__header" class="header__area header__absolute sticky__header">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
+					<div class="col-md-6 col-sm-6 col-6 col-lg-3">
 						<div class="logo">
 							<a href="/">
 								<img src="{% static 'my_app/images/logo/logo.png' %} " alt="logo images">
 							</a>
 						</div>
 					</div>
-					<div class="col-lg-8 d-none d-lg-block">
+					<div class="col-lg-7 d-none d-lg-block">
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex justify-content-start">
 								<li class="drop with--one--item"><a href="/">Bosh sahifa</a>
 								</li>
-								<li class="drop"><a href="/shop-grid/">Kitoblar</a>
-									<div class="megamenu mega03">
-										
-										<ul class="item item03">
-											<li class="title">Shop Page</li>
-											<li><a href="/my-accoun/">My Account</a></li>
-											<li><a href="/cart/">Cart Page</a></li>
-											<li><a href="/checkout/">Checkout Page</a></li>
-											<li><a href="/wishlist/">Wishlist Page</a></li>
-											<li><a href="/error404/">404 Page</a></li>
-											<li><a href="/faq/">Faq Page</a></li>
-										</ul>
-										<ul class="item item03">
-											<li class="title">Bargain Books</li>
-											<li><a href="/shop-grid/">Bargain Bestsellers</a></li>
-											<li><a href="/shop-grid/">Activity Kits</a></li>
-											<li><a href="/shop-grid/">B&N Classics</a></li>
-											<li><a href="/shop-grid/">Books Under $5</a></li>
-											<li><a href="/shop-grid/">Bargain Books</a></li>
-										</ul>
-									</div>
-								</li>
-								<li class="drop"><a href="/shop-grid/">Books</a>
-									
-								</li>
-								<li class="drop"><a href="shop-grid.html">Kids</a>
-									
-								</li>
-								<li class="drop"><a href="#">Sahifalar</a>
-									<div class="megamenu dropdown">
-										<ul class="item item01">
-											<li><a href="/about/">About Page</a></li>
-											<li class="label2"><a href="/portfolio/">Portfolio</a>
-												<ul>
-													<li><a href="/portfolio/">Portfolio</a></li>
-													<li><a href="/portfolio-three-column/">Portfolio 3 Column</a></li>
-													<li><a href="/portfolio-details/">Portfolio Details</a></li>
-												</ul>
-											</li>
-											<li><a href="/my-account/">My Account</a></li>
-											<li><a href="/cart/">Cart Page</a></li>
-											<li><a href="/checkout/">Checkout Page</a></li>
-											<li><a href="/wishlist/">Wishlist Page</a></li>
-											<li><a href="/error404/">404 Page</a></li>
-											<li><a href="/faq/">Faq Page</a></li>
-											<li><a href="/team/">Team Page</a></li>
-										</ul>
-									</div>
-								</li>
-								<li class="drop"><a href="blog.html">Blog</a>
-									<div class="megamenu dropdown">
-										<ul class="item item01">
-											<li><a href="/blog/">Blog Page</a></li>
-											<li><a href="/blog-left-sidebar/">Blog Left Sidebar</a></li>
-											<li><a href="/blog-no-sidebar/">Blog No Sidebar</a></li>
-											<li><a href="/blog-details/">Blog Details</a></li>
-										</ul>
-									</div>
-								</li>
-								<li><a href="{% url 'contact' %}">Contact</a></li>
+								<li class="drop"><a href="/shop-grid/">Kitoblar</a></li>
+								<li class="drop"><a href="/about/">Biz haqimizda</a></li>
+								<li class="drop"><a href="/blog/">Blog</a></li>
+								<li><a href="/contact/">Boglanish</a></li>
+								<li><a href="/team/">Bizning Jamoa</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -238,32 +183,13 @@
 					<div class="col-lg-12 d-none">
 						<nav class="mobilemenu__nav">
 							<ul class="meninmenu">
-								<li><a href="index.html">Home</a>
-									<ul>
-										<li><a href="/index/">Home Style Default</a></li>
-										<li><a href="/index-2/">Home Style Two</a></li>
-										<li><a href="/index-box/">Home Box Style</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Pages</a>
-									<ul>
-										<li><a href="/about/">About Page</a></li>
-										<li><a href="/portfolio/">Portfolio</a>
-											<ul>
-												<li><a href="/portfolio/">Portfolio</a></li>
-												<li><a href="/portfolio-three-column/">Portfolio 3 Column</a></li>
-												<li><a href="/portfolio-details/">Portfolio Details</a></li>
-											</ul>
-										</li>
-										<li><a href="/my-account/">My Account</a></li>
-										<li><a href="/cart/">Cart Page</a></li>
-										<li><a href="/checkout/">Checkout Page</a></li>
-										<li><a href="/wishlist/">Wishlist Page</a></li>
-										<li><a href="/error404/">404 Page</a></li>
-										<li><a href="/faq/">Faq Page</a></li>
-										<li><a href="/team/">Team Page</a></li>
-									</ul>
-								</li>
+								<li><a href="/">Bosh sahifa</a></li>
+								<li><a href="/shop/">Kitoblar</a></li>
+								<li><a href="/about/">Biz haqimizda</a></li>
+								<li><a href="/blog/">Blog</a></li>
+								<li><a href="/contact/">Bog'lanish</a></li>
+								<li><a href="/team/">Bizning Jamoa</a></li>
+
 								<li><a href="/shop-grid/">Shop</a>
 									<ul>
 										<li><a href="/shop-grid/">Shop Grid</a></li>
