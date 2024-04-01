@@ -45,11 +45,31 @@
         								</div>
         								<div class="product-reviews-summary d-flex">
         									<ul class="rating-summary d-flex">
+    											{% if result1 == 1%}
+												<li><i class="zmdi zmdi-star-outline"></i></li>
+												{% elif result1 == 2%}
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+												{% elif result1 == 3%}
+												<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+												{% elif result1 == 4%}
     											<li><i class="zmdi zmdi-star-outline"></i></li>
     											<li><i class="zmdi zmdi-star-outline"></i></li>
     											<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
-    											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+												{% elif result1 == 5%}
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+
+
+
+    										
+												{% endif %}
         									</ul>
         									<div class="reviews-actions d-flex">
         										<a href="#">( Sharhlar:{{ books.comments.count }})</a>
@@ -259,8 +279,8 @@
 
 									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product">
-											<div class="product__thumb">
-												<a class="first__img" href="single-product.html"><img src="{{ book.photo.url}}" alt="product image"></a>
+											<div class="product__thumb" style="width:300px;height:400px">
+												<a class="first__img" href="single-product.html" style="width:100%;height:100%"><img style="width:100%;height:100%; object-fit:cover;" src="{{ book.photo.url}}" alt="product image"></a>
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
@@ -291,7 +311,7 @@
 									{% endfor%}
 									<!-- Start Single Product -->
 								</div>
-							</div>
+							</div>			
 						</div>
         			</div>
 
