@@ -32,6 +32,7 @@ urlpatterns = [
     path('search/', views.searchpage, name='searchpage'),
     path('detail/<int:id>/', views.BooksDetailView.as_view(), name='detail'),
     path('add_comment/<int:id>/', views.AddCommentView.as_view(),name='AddCommentView'),
+    path('send-msg/', views.SendMsg),
 
 
 ]

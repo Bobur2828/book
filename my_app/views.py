@@ -7,6 +7,7 @@ from .forms import AddCommentForm
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Slider,Books,Category, Ourteam,Comment
+import requests
 
 def index(request):
     sliders=Slider.objects.all()
@@ -172,3 +173,18 @@ class AddCommentView(LoginRequiredMixin,View):
             )
             return redirect(reverse('books:detail', kwargs={'id':books.id}))
         return render(request, 'my_app/single-product.html',{'form':form,'books':books})
+
+
+def SendMsg(request):
+    firstname = request.POST['firstname']
+    lastname = request.POST['lastname']
+    email = request.POST['email']
+    number = request.POST['number']
+    message = request.POST['message']
+
+    bot_token = '6437135033:AAHvK59HsWn_ZzDtCvNRfwARTkGQ8pRUTa0'
+    text = 'Saytdan xabar: \n\nIsmi : ' + firstname + '\nFamilyasi : ' + lastname + '\nemail : ' + email + '\nTelefon nomer : ' + number + '\nXabar : ' + message
+    url = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id='
+    requests.get(url + '6516071223' + '&text=' + text)
+
+    return redirect('/')
