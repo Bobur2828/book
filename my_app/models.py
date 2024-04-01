@@ -11,7 +11,6 @@ class Books(models.Model):
     category = models.ForeignKey('Category', verbose_name='Kategoriyani tanlang', on_delete=models.CASCADE, related_name='books')
     author = models.ForeignKey('Author',verbose_name='Muallifni tanlang', on_delete=models.CASCADE, blank=True, null=True, related_name='author')
     custom_user = models.ForeignKey(User,verbose_name='Muallifni tanlang', on_delete=models.CASCADE, blank=True, null=True, related_name='custom')
-
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     def __str__(self):
@@ -59,7 +58,7 @@ class Comment(models.Model):
     stars_given = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now)
     def __str__(self):
-        return f"{self.user.username} commented to {self.books.name} and gave {self.stars_given} stars"
+        return f"{self.stars_given} "
     
 class Reklama(models.Model):
     text=models.CharField(max_length=250)
