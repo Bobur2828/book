@@ -142,6 +142,14 @@ class BooksDetailView(View):
         books = get_object_or_404(Books, id=id)
         author = books.author
         author_books = Books.objects.filter(author=author)
+        stars=Comment.objects.filter(books=books)
+        print(len(stars))
+        star=[]
+        for i in stars:
+            integer_value = int(stars)
+            star.append(integer_value)
+        print(star)
+
         return render(request, 'my_app/single-product.html', {'form': form, 'books': books, 'author_books': author_books})
 class AddCommentView(LoginRequiredMixin,View):
     def post(self, request,id):

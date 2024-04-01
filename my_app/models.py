@@ -58,7 +58,7 @@ class Comment(models.Model):
     stars_given = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now)
     def __str__(self):
-        return f"{self.user.username} commented to {self.books.name} and gave {self.stars_given} stars"
+        return f"{self.stars_given} "
     
 class Reklama(models.Model):
     text=models.CharField(max_length=250)

@@ -70,7 +70,7 @@ def Yuklash(request):
         description = r['description']
         pdf = f['pdf']
         muallif = r['muallif']
-        custom_user=request.user
+        custom_user=request.user.id
         
         if author == '':
             muallif_base = Author.objects.create(name=muallif)
@@ -82,7 +82,7 @@ def Yuklash(request):
             return redirect('/')
         else:
             category = get_object_or_404(Category, id=category_id)
-            Books.objects.create(category=category, name=name, author_id=author, photo=photo, pdf=pdf, description=description,custom_user=custom_user)
+            Books.objects.create(category=category, name=name, author_id=author, photo=photo, pdf=pdf, description=description,)
             return redirect('/')
     else:
         return render(request, 'yuklash1.html', context)
