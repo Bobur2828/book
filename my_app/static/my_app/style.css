@@ -6232,3 +6232,10 @@ a.checkout__title {
     cursor: pointer;
     border: solid 1px #BA68C8
 }
+
+
+@media screen and (min-width: 480px) {
+  .ketmon {
+    width:100px
+  }
+}

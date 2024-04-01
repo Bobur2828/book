@@ -127,19 +127,15 @@
 
 
 														<div class="row">
-															<div class="col-4">
+															<div class="col-lg-4 col-sm-4 col-4 ">
 																<img style="border-radius: 50%" src="{% if comment.user.image %}{{ comment.user.image.url }}{% else %}https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg{% endif %}" alt="avatar" width="100">
 																<p>{{ comment.user.first_name }}</p>
 															</div>
-															<div class="col-5">
+															<div class="col-lg-5 col-sm-5 col-md-5 col-4 ketmon">
 
-																<h2 style="border: 1px solid; border-radius:10px; padding-left:10px; margin-top:20px; padding-top:10px; padding-bottom:10px; ; width:500px">{{ comment.comment }}</h2>
+																<h2 class="ketmon" style="border: 1px solid; border-radius:10px; padding-left:10px; margin-top:20px; padding-top:10px; padding-bottom:10px; ; width:500px">{{ comment.comment }}</h2>
 
 
-
-																<ul>
-																	<li style="test-align:end"><i class="zmdi zmdi-delete"></i></li>
-																</ul>
 
 															</div>
 
@@ -148,6 +144,10 @@
 
 														<div class="review__ratings__type d-flex">
 															<div class="review-ratings">
+																<ul class="d-flex">
+																		<li class="mr-3"><i class="zmdi zmdi-delete"></i></li>
+																		<li><i class="zmdi zmdi-edit"></i></li>
+																	</ul>
 																<div class="rating-summary d-flex">
 																	<span>Quality</span>
 
@@ -183,7 +183,9 @@
 																			<li><i class="zmdi zmdi-star"></i></li>
 																			<li><i class="zmdi zmdi-star"></i></li>
 																		{% endif %}
+
 																	</ul>
+
 																</div>
 
 																	<p>Review by {{ comment.author }}</p>
