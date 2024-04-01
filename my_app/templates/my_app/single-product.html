@@ -78,16 +78,23 @@
         								</div>
         								<div class="price-box">
         								</div>
-        								
-        								
-        								<div class="product-addto-links clearfix">
-        									<a class="wishlist" href="#"></a>
-        									<a class="compare" href="#"></a>
-        									<a class="email" href="#"></a>
-        								</div>
+
+                                         <div class="row">
+											 <div class="product-addto-links clearfix col-6">
+												<a class="wishlist" href="#"></a>
+												<a class="compare" href="#"></a>
+												<a class="email" href="#"></a>
+        									</div>
+											<div  y class="col-6">
+												<a style="border:2px solid black; padding:10px; background-color:grey; color:white" class="download" href="{{ books.pdf.url }}" download=""> Yuklab olish </a>
+											</div>
+
+
+										 </div>
+
         								<div class="product__overview">
         									<p>{{books.description}}</p>
-        									
+
         								</div>
         							</div>
         						</div>
@@ -95,7 +102,10 @@
         				</div>
         				<div class="product__info__detailed">
 							<div class="pro_details_nav nav justify-content-start" role="tablist">
+<<<<<<< HEAD
+=======
 								<a class="nav-item nav-link  " data-toggle="tab" href="#nav-details" role="tab">Tafsilotlar</a>
+>>>>>>> 4751f526891004eab3fdb9c6e469b2e3995a3130
 								<a class="nav-item nav-link  " data-toggle="tab" href="#nav-review" role="tab">Sharhlar</a>
 								<div class="tab__container">
 									<!-- Start Single Tab Content -->
@@ -114,20 +124,44 @@
 										<div class="review__attribute">
 											<form action="{% url 'books:AddCommentView' books.id %}" method="post">
 												{% csrf_token %}
+<<<<<<< HEAD
+												<div class="row">
+													<div class="col-12">
+														<p> <h6> Fikr bildirish: </h6>  {{ form.comment  }}</p>
+													</div>
+													<div class="col-6">
+														<p style="margin-top:40px"> <h6 style="margin-right:20px"> Baholash: </h6>  {{form.stars_given}}</p>
+													</div>
+													<div  class="col-6 mt-3">
+														<button style="margin-left:85px; margin-top:20px; margin-bottom:60px" type="submit" class="btn btn-success">Saqlash</button>
+													</div>
+
+												</div>
+
+=======
 												<p> <span> Fikr bildirish: </span>  {{ form.comment  }}</p>
 												<p style="margin-top:40px"> <span style="margin-right:16px"> Baholash: </span>  {{form.stars_given}}</p>
 												<button style="margin-left:85px; margin-top:20px; margin-bottom:60px" type="submit" class="btn btn-success">Saqlash</button>
+>>>>>>> 4751f526891004eab3fdb9c6e469b2e3995a3130
 											</form>
 											<h1>Customer Reviews</h1>
 											{% for comment in books.comments.all %}
 												<div class="review__item">
+<<<<<<< HEAD
+													<div class="review__content" style="border: 1px solid; border-radius:20px; padding:20px; margin-bottom:20px" >
+=======
 													<div class="review__content" style="border: 1px solid; border-radius:30px; padding:40px; margin-bottom:20px" >
+>>>>>>> 4751f526891004eab3fdb9c6e469b2e3995a3130
 														<div class="row">
 															<div class="col-4">
 																<img style="border-radius: 50%" src="{% if comment.user.image %}{{ comment.user.image.url }}{% else %}https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg{% endif %}" alt="avatar" width="100">
 															</div>
 															<div class="col-5">
+<<<<<<< HEAD
+																<h2 style="border: 1px solid; border-radius:10px; padding-left:10px; margin-top:20px; padding-top:10px; padding-bottom:10px; ; width:500px">{{ comment.comment }}</h2>
+=======
 																<h2 style="border: 1px solid; border-radius:30px; padding-left:10px; margin-top:20px; padding-top:10px; padding-bottom:10px; ; width:500px">{{ comment.comment }}</h2>
+>>>>>>> 4751f526891004eab3fdb9c6e469b2e3995a3130
 															</div>
 
 
@@ -137,7 +171,7 @@
 															<div class="review-ratings">
 																<div class="rating-summary d-flex">
 																	<span>Quality</span>
-																	
+
 																	<ul class="rating d-flex">
 																		{% if comment.stars_given == 1 %}
 																			<li><i class="zmdi zmdi-star"></i></li>
@@ -172,9 +206,12 @@
 																		{% endif %}
 																	</ul>
 																</div>
+<<<<<<< HEAD
+=======
 															</div>
 															<div class="review-content">
 																<p>{{ comment.user.first_name }}</p>
+>>>>>>> 4751f526891004eab3fdb9c6e469b2e3995a3130
 																<p>Review by {{ comment.author }}</p>
 																<p>Posted on {{ comment.created_at|date:"m/d/Y" }}</p>
 															</div>
@@ -185,7 +222,7 @@
 										</div>
 									</div>
 								</div>
-								
+
 	                        	<!-- End Single Tab Content -->
 	                        </div>
         				</div>
@@ -252,7 +289,7 @@
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
-												
+
 												<div class="action">
 													<div class="actions_inner">
 														<ul class="add_to_links">
@@ -291,7 +328,7 @@
 									{% for category in categorys %}
         							<li><a href="#">{{ category}} <span>({{ category.books.count }})</span></a></li>
 									{% endfor %}
-        						
+
         						</ul>
         					</aside>
         					<aside class="wedget__categories pro--range">
