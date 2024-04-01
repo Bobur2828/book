@@ -2,18 +2,16 @@
 {% block content%}
 {% load static%}
 		{% if messages %}
-            <div class="container">
+          <div class="container">
             {% for message in messages %}
-                <div class="alert alert-secondary text-dark alert-dismissible fade show" role="alert" style="background-color: bg-second;">
-                    <div style="text-align: center;">{{ message }}</div>
-                        
-                   
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+					<strong>Salom!</strong> <h6>{{ message }}</h6>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             {% endfor %}
-            </div>
+           </div>
         {% endif %}
-        <!-- Start Slider area -->
+         <!-- Start Slider area -->
         <div class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme">
 			{% for slider in sliders %}
 			<div class="slide animation__style10  fullscreen align__center--left" style="background-image: url('{{ slider.image.url }}');">
