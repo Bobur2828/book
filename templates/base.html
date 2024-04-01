@@ -40,14 +40,14 @@
 		<header id="wn__header" class="header__area header__absolute sticky__header">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-6 col-sm-6 col-6 col-lg-3">
+					<div class="col-md-6 col-sm-6 col-6 col-lg-1">
 						<div class="logo">
 							<a href="/">
 								<img src="{% static 'my_app/images/logo/logo.png' %} " alt="logo images">
 							</a>
 						</div>
 					</div>
-					<div class="col-lg-7 d-none d-lg-block">
+					<div class="col-lg-10 d-none d-lg-block">
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex justify-content-start">
 								<li class="drop with--one--item"><a href="/">Bosh sahifa</a>
@@ -56,14 +56,15 @@
 								<li class="drop"><a href="/about/">Biz haqimizda</a></li>
 								<li class="drop"><a href="/blog/">Blog</a></li>
 								<li><a href="/contact/">Boglanish</a></li>
-								<li><a href="/team/">Bizning Jamoa</a></li>
+								<li><a href="/users/yuklash/">Kitobni yuklash</a></li>
+								<li><a href="/team/"> Jamoa</a></li>
 							</ul>
 						</nav>
 					</div>
-					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
+					<div class="col-md-6 col-sm-6 col-6 col-lg-1">
 						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
 							<form action="" method="get" class="d-flex">
-								<input class="form-control" type="textarea" placeholder="Qidiruv" name="q" style="width: 200px;">
+								<input class="form-control" type="textarea" placeholder="Qidiruv" name="q" style="width: 180px;">
 
 								<button type="submit" class="shop_search btn btn-white ">
 									<span class="bi bi-search"></span>
@@ -194,27 +195,11 @@
 								<li><a href="/about/">Biz haqimizda</a></li>
 								<li><a href="/blog/">Blog</a></li>
 								<li><a href="/contact/">Bog'lanish</a></li>
+								<li><a href="/users/yuklash/">Kitobni yuklash</a></li>
 								<li><a href="/team/">Bizning Jamoa</a></li>
 
-								<li><a href="/shop-grid/">Shop</a>
-									<ul>
-										<li><a href="/shop-grid/">Shop Grid</a></li>
-										<li><a href="/shop-list/">Shop List</a></li>
-										<li><a href="/shop-left-sidebar/">Shop Left Sidebar</a></li>
-										<li><a href="/shop-right-sidebar/">Shop Right Sidebar</a></li>
-										<li><a href="/shop-no-sidebar/">Shop No sidebar</a></li>
-										<li><a href="/single-product/">Single Product</a></li>
-									</ul>
-								</li>
-								<li><a href="/blog/">Blog</a>
-									<ul>
-										<li><a href="/blog/">Blog Page</a></li>
-										<li><a href="/blog-left-sidebar/">Blog Left Sidebar</a></li>
-										<li><a href="/blog-no-sidebar/">Blog No Sidebar</a></li>
-										<li><a href="/blog-details/">Blog Details</a></li>
-									</ul>
-								</li>
-								<li><a href="/contact/">Contact</a></li>
+
+
 							</ul>
 						</nav>
 					</div>
