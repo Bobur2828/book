@@ -8,7 +8,7 @@ class Books(models.Model):
 
     pdf=models.FileField(upload_to='books/pdf', verbose_name="Kitob faylini yuklash")
     photo=models.ImageField(upload_to='books/photo', verbose_name="kitob rasmini kiriting")
-    category = models.ForeignKey('Category', verbose_name='Kategoriyani tanlang', on_delete=models.CASCADE)
+    category = models.ForeignKey('Category', verbose_name='Kategoriyani tanlang', on_delete=models.CASCADE, related_name='books')
     author = models.ForeignKey('Author',verbose_name='Muallifni tanlang', on_delete=models.CASCADE, blank=True, null=True, related_name='author')
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
@@ -58,3 +58,12 @@ class Comment(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     def __str__(self):
         return f"{self.user.username} commented to {self.books.name} and gave {self.stars_given} stars"
+    
+class Reklama(models.Model):
+    text=models.CharField(max_length=250)
+    image = models.ImageField(upload_to='reklama/image', verbose_name="Reklama")
+    data_created=models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.text
+    

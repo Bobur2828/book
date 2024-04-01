@@ -1,12 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.urls import reverse
 from django.views.generic import ListView, View
 from .forms import AddCommentForm
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Slider,Books,Category, Ourteam,Comment
+
 def index(request):
     sliders=Slider.objects.all()
     books=Books.objects.all()
@@ -130,19 +131,13 @@ def searchpage(request):
     return render(request, 'my_app/index.html', context)
 
 
-# def single_product(request, id):
-#     books=Books.objects.filter(id=id)
-#     data={
-#         "books":books
-#     }
-#     return render(request, 'my_app/single-product.html',context=data)
-
 class BooksDetailView(View):
     def get(self, request, id):
-        form=AddCommentForm()
-        books=Books.objects.filter(id=id)
-        return render(request, 'my_app/single-product.html',{'form':form,'books':books})
-
+        form = AddCommentForm()
+        books = get_object_or_404(Books, id=id)
+        author = books.author
+        author_books = Books.objects.filter(author=author)
+        return render(request, 'my_app/single-product.html', {'form': form, 'books': books, 'author_books': author_books})
 class AddCommentView(LoginRequiredMixin,View):
     def post(self, request,id):
         form=AddCommentForm(request.POST)
