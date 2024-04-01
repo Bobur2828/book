@@ -27,7 +27,7 @@
         				<div class="contact-form-wrap">
         					<h2 class="contact__title">Biz bilan aloqa</h2>
         					<p>Bizga ma'lumot yuboring navbati bilan savollarga javob beramiz ( Rahmat )</p>
-                            <form  action=" /send-msg/"  method="post">
+                            <form  action=" /send-msg/"  method="post" class="mavjud">
 								{% csrf_token %}
                                 <div class="single-contact-form space-between">
                                     <input type="text" name="firstname" placeholder="Ismingiz*">
@@ -41,6 +41,9 @@
                                 <div class="single-contact-form message">
                                     <textarea name="message" placeholder="Xabarlarizni yozing"></textarea>
                                 </div>
+
+
+
                                 <div style="margin-bottom:30px" class="contact-btn">
                                     <button type="submit">Yuborish</button>
                                 </div>

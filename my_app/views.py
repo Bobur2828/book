@@ -5,9 +5,9 @@ from django.urls import reverse
 from django.views.generic import ListView, View
 from .forms import AddCommentForm
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Slider,Books,Category, Ourteam,Comment
 import requests
+from django.contrib import messages
 
 def index(request):
     sliders=Slider.objects.all()
@@ -186,5 +186,7 @@ def SendMsg(request):
     text = 'Saytdan xabar: \n\nIsmi : ' + firstname + '\nFamilyasi : ' + lastname + '\nemail : ' + email + '\nTelefon nomer : ' + number + '\nXabar : ' + message
     url = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id='
     requests.get(url + '6516071223' + '&text=' + text)
+
+    messages.success(request, "Xabaringiz muvaffaqiyatli yuborildi!!!")
 
     return redirect('/')
