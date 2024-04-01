@@ -45,11 +45,31 @@
         								</div>
         								<div class="product-reviews-summary d-flex">
         									<ul class="rating-summary d-flex">
+    											{% if result1 == 1%}
+												<li><i class="zmdi zmdi-star-outline"></i></li>
+												{% elif result1 == 2%}
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+												{% elif result1 == 3%}
+												<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+												{% elif result1 == 4%}
     											<li><i class="zmdi zmdi-star-outline"></i></li>
     											<li><i class="zmdi zmdi-star-outline"></i></li>
     											<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
-    											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+												{% elif result1 == 5%}
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+    											<li><i class="zmdi zmdi-star-outline"></i></li>
+
+
+
+    										
+												{% endif %}
         									</ul>
         									<div class="reviews-actions d-flex">
         										<a href="#">( Sharhlar:{{ books.comments.count }})</a>
