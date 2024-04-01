@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Books,Category,Author,Slider, Ourteam,Comment
+from .models import Books,Category,Author,Slider, Ourteam,Comment,Reklama
 
-admin.site.register(Slider)
+admin.site.register([Slider,Reklama])
 
 @admin.register(Ourteam)
 class OurteamAdmin(admin.ModelAdmin):

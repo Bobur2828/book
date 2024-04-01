@@ -29,15 +29,17 @@
         						<div class="col-lg-6 col-12">
         							<div class="wn__fotorama__wrapper">
 	        							<div class="fotorama wn__fotorama__action" data-nav="thumbs">
-		        							  <a href="1.jpg'%}"><img src="{{ books.0.photo.url}}" alt=""></a>
+		        							  <a href="1.jpg'%}"><img src="{{ books.photo.url}}" alt=""></a>
 		        							  
 	        							</div>
         							</div>
         						</div>
         						<div class="col-lg-6 col-12">
         							<div class="product__info__main">
-        								<h1>{{ books.0.name}}</h1>
-        								<h1>{{ books.0.author}}</h1>
+        								<h1>Kitob nomi: {{ books.name}}</h1>
+        								<h1>Muallif: {{ books.author}}</h1>
+        								<h1>Ketegoriya: {{ books.category}}</h1>
+
 
         								<div class="product-info-stock-sku d-flex">
         								</div>
@@ -64,7 +66,7 @@
         									<a class="email" href="#"></a>
         								</div>
         								<div class="product__overview">
-        									<p>{{books.0.description}}</p>
+        									<p>{{books.description}}</p>
         									
         								</div>
         							</div>
@@ -74,6 +76,14 @@
         				<div class="product__info__detailed">
 							<div class="pro_details_nav nav justify-content-start">
 								<a class="nav-item nav-link  " data-toggle="tab" href="#nav-review" role="tab">Sharhlar</a>
+<<<<<<< HEAD
+=======
+								<div class="tab__container">
+									<!-- Start Single Tab Content -->
+									<div class="pro__tab_label tab-pane fade show active" id="nav-details" role="tabpanel">
+										<div class="description__attribute">
+											<p>{{books.description}}</p>
+>>>>>>> f9eada75db64482edf4e967608790e611733ce5a
 
 									<!-- Start Single Tab Content -->
 
@@ -84,7 +94,7 @@
 	                        	<div class="container">
 									<div >
 										<div class="review__attribute">
-											<form action="{% url 'books:AddCommentView' books.0.id %}" method="post">
+											<form action="{% url 'books:AddCommentView' books.id %}" method="post">
 												{% csrf_token %}
 												<p > <span> Fikr bildirish: </span>  {{ form.comment  }}</p>
 												<span style="margin-top:40px"> <span style="margin-right:16px"> Baholash: </span>  {{form.stars_given}}</span>
@@ -100,7 +110,11 @@
 																<p>{{ comment.user.first_name }}</p>
 															</div>
 															<div class="col-5">
+<<<<<<< HEAD
 																<h2 style="border: 1px solid; border-radius:10px; padding-left:30px; margin-top:20px; padding-top:10px; padding-bottom:10px; ; width:500px">{{ comment.comment }}</h2>
+=======
+																<h2 style="border: 1px solid; border-radius:30px; padding-left:10px; margin-top:20px; padding-top:10px; padding-bottom:10px; ; width:500px">{{ comment.comment }}</h2>
+>>>>>>> f9eada75db64482edf4e967608790e611733ce5a
 															</div>
 
 
@@ -110,6 +124,7 @@
 															<div class="review-ratings">
 																<div class="rating-summary d-flex">
 																	<span>Quality</span>
+																	
 																	<ul class="rating d-flex">
 																		{% if comment.stars_given == 1 %}
 																			<li><i class="zmdi zmdi-star"></i></li>
@@ -163,23 +178,20 @@
         				</div>
 						<div class="wn__related__product pt--80 pb--50">
 							<div class="section__title text-center">
-								<h2 class="title__be--2">Related Products</h2>
+								<h2 class="title__be--2">{{books.author.name}} kitoblari</h2>
 							</div>
 							<div class="row mt--60">
 								<div class="productcategory__slide--2 arrows_style owl-carousel owl-theme">
 									<!-- Start Single Product -->
+									{% for book in author_books %}
 									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product">
 											<div class="product__thumb">
-												<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/1.jpg'%}" alt="product image"></a>
+												<a class="first__img" href="single-product.html"><img src="{{ book.photo.url }}" alt="product image"></a>
 												<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/2.jpg'%}" alt="product image"></a>
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
-												<ul class="prize position__right__bottom d-flex">
-													<li>$35.00</li>
-													<li class="old_prize">$38.00</li>
-												</ul>
 												<div class="action">
 													<div class="actions_inner">
 														<ul class="add_to_links">
@@ -192,7 +204,7 @@
 												</div>
 											</div>
 											<div class="product__content">
-												<h4><a href="single-product.html">Crown Summit Backpack</a></h4>
+												<h4><a href="single-product.html">{{ book.name }}</a></h4>
 												<ul class="rating d-flex">
 													<li class="on"><i class="fa fa-star-o"></i></li>
 													<li class="on"><i class="fa fa-star-o"></i></li>
@@ -203,214 +215,28 @@
 											</div>
 										</div>
 									</div>
-									<!-- Start Single Product -->
-									<!-- Start Single Product -->
-									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="product">
-											<div class="product__thumb">
-												<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/2.jpg'%}" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/4.jpg'%}" alt="product image"></a>
-												<div class="new__box">
-													<span class="new-label">New</span>
-												</div>
-												<ul class="prize position__right__bottom d-flex">
-													<li>$35.00</li>
-													<li class="old_prize">$38.00</li>
-												</ul>
-												<div class="action">
-													<div class="actions_inner">
-														<ul class="add_to_links">
-															<li><a class="cart" href="cart.html"></a></li>
-															<li><a class="wishlist" href="wishlist.html"></a></li>
-															<li><a class="compare" href="compare.html"></a></li>
-															<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="product__content">
-												<h4><a href="single-product.html">Crown Summit Backpack</a></h4>
-												<ul class="rating d-flex">
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<!-- Start Single Product -->
-									<!-- Start Single Product -->
-									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="product">
-											<div class="product__thumb">
-												<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/3.jpg'%}" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/6.jpg'%}" alt="product image"></a>
-												<div class="new__box">
-													<span class="new-label">New</span>
-												</div>
-												<ul class="prize position__right__bottom d-flex">
-													<li>$35.00</li>
-													<li class="old_prize">$38.00</li>
-												</ul>
-												<div class="action">
-													<div class="actions_inner">
-														<ul class="add_to_links">
-															<li><a class="cart" href="cart.html"></a></li>
-															<li><a class="wishlist" href="wishlist.html"></a></li>
-															<li><a class="compare" href="compare.html"></a></li>
-															<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="product__content">
-												<h4><a href="single-product.html">Crown Summit Backpack</a></h4>
-												<ul class="rating d-flex">
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<!-- Start Single Product -->
-									<!-- Start Single Product -->
-									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="product">
-											<div class="product__thumb">
-												<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/4.jpg'%}" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/8.jpg'%}" alt="product image"></a>
-												<div class="new__box">
-													<span class="new-label">New</span>
-												</div>
-												<ul class="prize position__right__bottom d-flex">
-													<li>$35.00</li>
-													<li class="old_prize">$38.00</li>
-												</ul>
-												<div class="action">
-													<div class="actions_inner">
-														<ul class="add_to_links">
-															<li><a class="cart" href="cart.html"></a></li>
-															<li><a class="wishlist" href="wishlist.html"></a></li>
-															<li><a class="compare" href="compare.html"></a></li>
-															<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="product__content">
-												<h4><a href="single-product.html">Crown Summit Backpack</a></h4>
-												<ul class="rating d-flex">
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<!-- Start Single Product -->
-									<!-- Start Single Product -->
-									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="product">
-											<div class="product__thumb">
-												<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/9.jpg'%}" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/2.jpg'%}" alt="product image"></a>
-												<div class="new__box">
-													<span class="new-label">New</span>
-												</div>
-												<ul class="prize position__right__bottom d-flex">
-													<li>$35.00</li>
-													<li class="old_prize">$38.00</li>
-												</ul>
-												<div class="action">
-													<div class="actions_inner">
-														<ul class="add_to_links">
-															<li><a class="cart" href="cart.html"></a></li>
-															<li><a class="wishlist" href="wishlist.html"></a></li>
-															<li><a class="compare" href="compare.html"></a></li>
-															<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="product__content">
-												<h4><a href="single-product.html">Crown Summit Backpack</a></h4>
-												<ul class="rating d-flex">
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<!-- Start Single Product -->
-									<!-- Start Single Product -->
-									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="product">
-											<div class="product__thumb">
-												<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/9.jpg'%}" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/8.jpg'%}" alt="product image"></a>
-												<div class="new__box">
-													<span class="new-label">New</span>
-												</div>
-												<ul class="prize position__right__bottom d-flex">
-													<li>$35.00</li>
-													<li class="old_prize">$38.00</li>
-												</ul>
-												<div class="action">
-													<div class="actions_inner">
-														<ul class="add_to_links">
-															<li><a class="cart" href="cart.html"></a></li>
-															<li><a class="wishlist" href="wishlist.html"></a></li>
-															<li><a class="compare" href="compare.html"></a></li>
-															<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="product__content">
-												<h4><a href="single-product.html">Crown Summit Backpack</a></h4>
-												<ul class="rating d-flex">
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<!-- Start Single Product -->
+									{% endfor %}
+									<!-- End Single Product -->
 								</div>
 							</div>
 						</div>
 						<div class="wn__related__product">
 							<div class="section__title text-center">
-								<h2 class="title__be--2">upsell products</h2>
+								<h2 class="title__be--2">Tavsiya etamiz</h2>
 							</div>
 							<div class="row mt--60">
 								<div class="productcategory__slide--2 arrows_style owl-carousel owl-theme">
 									<!-- Start Single Product -->
+									{% for book in related_books %}
+
 									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product">
 											<div class="product__thumb">
-												<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/2.jpg'%}" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/1.jpg'%}" alt="product image"></a>
+												<a class="first__img" href="single-product.html"><img src="{{ book.photo.url}}" alt="product image"></a>
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
-												<ul class="prize position__right__bottom d-flex">
-													<li>$35.00</li>
-													<li class="old_prize">$38.00</li>
-												</ul>
+												
 												<div class="action">
 													<div class="actions_inner">
 														<ul class="add_to_links">
@@ -423,7 +249,7 @@
 												</div>
 											</div>
 											<div class="product__content">
-												<h4><a href="single-product.html">Crown Summit Backpack</a></h4>
+												<h4><a href="single-product.html">{{ book.name }}</a></h4>
 												<ul class="rating d-flex">
 													<li class="on"><i class="fa fa-star-o"></i></li>
 													<li class="on"><i class="fa fa-star-o"></i></li>
@@ -434,191 +260,7 @@
 											</div>
 										</div>
 									</div>
-									<!-- Start Single Product -->
-									<!-- Start Single Product -->
-									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="product">
-											<div class="product__thumb">
-												<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/4.jpg'%}" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/3.jpg'%}" alt="product image"></a>
-												<div class="new__box">
-													<span class="new-label">New</span>
-												</div>
-												<ul class="prize position__right__bottom d-flex">
-													<li>$35.00</li>
-													<li class="old_prize">$38.00</li>
-												</ul>
-												<div class="action">
-													<div class="actions_inner">
-														<ul class="add_to_links">
-															<li><a class="cart" href="cart.html"></a></li>
-															<li><a class="wishlist" href="wishlist.html"></a></li>
-															<li><a class="compare" href="compare.html"></a></li>
-															<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="product__content">
-												<h4><a href="single-product.html">Crown Summit Backpack</a></h4>
-												<ul class="rating d-flex">
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<!-- Start Single Product -->
-									<!-- Start Single Product -->
-									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="product">
-											<div class="product__thumb">
-												<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/6.jpg'%}" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/5.jpg'%}" alt="product image"></a>
-												<div class="new__box">
-													<span class="new-label">New</span>
-												</div>
-												<ul class="prize position__right__bottom d-flex">
-													<li>$35.00</li>
-													<li class="old_prize">$38.00</li>
-												</ul>
-												<div class="action">
-													<div class="actions_inner">
-														<ul class="add_to_links">
-															<li><a class="cart" href="cart.html"></a></li>
-															<li><a class="wishlist" href="wishlist.html"></a></li>
-															<li><a class="compare" href="compare.html"></a></li>
-															<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="product__content">
-												<h4><a href="single-product.html">Crown Summit Backpack</a></h4>
-												<ul class="rating d-flex">
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<!-- Start Single Product -->
-									<!-- Start Single Product -->
-									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="product">
-											<div class="product__thumb">
-												<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/8.jpg'%}" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/7.jpg'%}" alt="product image"></a>
-												<div class="new__box">
-													<span class="new-label">New</span>
-												</div>
-												<ul class="prize position__right__bottom d-flex">
-													<li>$35.00</li>
-													<li class="old_prize">$38.00</li>
-												</ul>
-												<div class="action">
-													<div class="actions_inner">
-														<ul class="add_to_links">
-															<li><a class="cart" href="cart.html"></a></li>
-															<li><a class="wishlist" href="wishlist.html"></a></li>
-															<li><a class="compare" href="compare.html"></a></li>
-															<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="product__content">
-												<h4><a href="single-product.html">Crown Summit Backpack</a></h4>
-												<ul class="rating d-flex">
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<!-- Start Single Product -->
-									<!-- Start Single Product -->
-									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="product">
-											<div class="product__thumb">
-												<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/9.jpg'%}" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/2.jpg'%}" alt="product image"></a>
-												<div class="new__box">
-													<span class="new-label">New</span>
-												</div>
-												<ul class="prize position__right__bottom d-flex">
-													<li>$35.00</li>
-													<li class="old_prize">$38.00</li>
-												</ul>
-												<div class="action">
-													<div class="actions_inner">
-														<ul class="add_to_links">
-															<li><a class="cart" href="cart.html"></a></li>
-															<li><a class="wishlist" href="wishlist.html"></a></li>
-															<li><a class="compare" href="compare.html"></a></li>
-															<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="product__content">
-												<h4><a href="single-product.html">Crown Summit Backpack</a></h4>
-												<ul class="rating d-flex">
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<!-- Start Single Product -->
-									<!-- Start Single Product -->
-									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-										<div class="product">
-											<div class="product__thumb">
-												<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/9.jpg'%}" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/8.jpg'%}" alt="product image"></a>
-												<div class="new__box">
-													<span class="new-label">New</span>
-												</div>
-												<ul class="prize position__right__bottom d-flex">
-													<li>$35.00</li>
-													<li class="old_prize">$38.00</li>
-												</ul>
-												<div class="action">
-													<div class="actions_inner">
-														<ul class="add_to_links">
-															<li><a class="cart" href="cart.html"></a></li>
-															<li><a class="wishlist" href="wishlist.html"></a></li>
-															<li><a class="compare" href="compare.html"></a></li>
-															<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="product__content">
-												<h4><a href="single-product.html">Crown Summit Backpack</a></h4>
-												<ul class="rating d-flex">
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-												</ul>
-											</div>
-										</div>
-									</div>
+									{% endfor%}
 									<!-- Start Single Product -->
 								</div>
 							</div>
@@ -627,24 +269,12 @@
         			<div class="col-lg-3 col-12 md-mt-40 sm-mt-40">
         				<div class="shop__sidebar">
         					<aside class="wedget__categories poroduct--cat">
-        						<h3 class="wedget__title">Product Categories</h3>
+        						<h3 class="wedget__title">Kategoriyalar</h3>
         						<ul>
-        							<li><a href="#">Biography <span>(3)</span></a></li>
-        							<li><a href="#">Business <span>(4)</span></a></li>
-        							<li><a href="#">Cookbooks <span>(6)</span></a></li>
-        							<li><a href="#">Health & Fitness <span>(7)</span></a></li>
-        							<li><a href="#">History <span>(8)</span></a></li>
-        							<li><a href="#">Mystery <span>(9)</span></a></li>
-        							<li><a href="#">Inspiration <span>(13)</span></a></li>
-        							<li><a href="#">Romance <span>(20)</span></a></li>
-        							<li><a href="#">Fiction/Fantasy <span>(22)</span></a></li>
-        							<li><a href="#">Self-Improvement <span>(13)</span></a></li>
-        							<li><a href="#">Humor Books <span>(17)</span></a></li>
-        							<li><a href="#">Harry Potter <span>(20)</span></a></li>
-        							<li><a href="#">Land of Stories <span>(34)</span></a></li>
-        							<li><a href="#">Kids' Music <span>(60)</span></a></li>
-        							<li><a href="#">Toys & Games <span>(3)</span></a></li>
-        							<li><a href="#">hoodies <span>(3)</span></a></li>
+									{% for category in categorys %}
+        							<li><a href="#">{{ category}} <span>({{ category.books.count }})</span></a></li>
+									{% endfor %}
+        						
         						</ul>
         					</aside>
         					<aside class="wedget__categories pro--range">
@@ -694,10 +324,10 @@
         						</ul>
         					</aside>
         					<aside class="wedget__categories sidebar--banner">
-								<img src="{% static 'my_app/images/others/banner_left.jpg'%}" alt="banner images">
+								<img src="{{ reklama.0.image.url}}" alt="banner images">
 								<div class="text">
-									<h2>new products</h2>
-									<h6>save up to <br> <strong>40%</strong>off</h6>
+									<h2></h2>
+									<h6> <br> <strong></strong></h6>
 								</div>
         					</aside>
         				</div>
@@ -722,6 +352,7 @@
 		</div>
 		<!-- End Search Popup -->
 		<!-- Start NEwsletter Area -->
+		
 		<section class="wn__newsletter__area bg-image--2">
 			<div class="container">
 				<div class="row">

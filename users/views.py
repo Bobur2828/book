@@ -96,25 +96,10 @@ class ProfileUpdateView(UpdateView):
         print(r)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('users:profile')
         return render(request, 'account_update.html', {'form':form})
 
 class Profile(View):
     def get(self, request):
         return render(request, 'account_view.html')
     
-def image_edit(request):
-    context = {
-        'user': User.objects.all()
-    }
-    if request.method == "POST":
-        r = request.POST
-        f = request.FILES
-        print(r)
-      
-        photo = f['photo']
-        name = r['name']
-        author = r['author']
-        description = r['description']
-        pdf = f['pdf']
-        muallif = r['muallif']

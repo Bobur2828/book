@@ -65,6 +65,12 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'my_app.context_processors.categorys',
+                'my_app.context_processors.related_books',
+                'my_app.context_processors.reklama',
+
+
+
             ],
         },
     },
