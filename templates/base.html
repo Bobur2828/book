@@ -226,13 +226,18 @@
 				<span>close</span>
 			</div>
 		</div>
-
-		{% for msg in messages %}
-			<div class="alert alert-warning alert-dismissible fade show" role="alert">
-			  <strong>Assalomu alaykum!</strong> {{ msg }}
-			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>
-		{% endfor %}
+		{% if messages %}
+            <div class="container">
+            {% for message in messages %}
+                <div class="alert alert-secondary text-dark alert-dismissible fade show" role="alert" style="background-color: bg-second;">
+                    <div style="text-align: center;">{{ message }}</div>
+                        
+                   
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
 		<!-- End Search Popup -->
         {% block content %}
         {% endblock content%}

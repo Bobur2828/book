@@ -189,7 +189,6 @@ def SendMsg(request):
     text = 'Saytdan xabar: \n\nIsmi : ' + firstname + '\nFamilyasi : ' + lastname + '\nemail : ' + email + '\nTelefon nomer : ' + number + '\nXabar : ' + message
     url = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id='
     requests.get(url + '6516071223' + '&text=' + text)
+    messages.success(request, (f"Xabaringiz muvaffaqiyatli yuborildi!!!"))
 
-    messages.success(request, "Xabaringiz muvaffaqiyatli yuborildi!!!")
-
-    return redirect('/')
+    return redirect('books:index')
