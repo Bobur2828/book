@@ -31,7 +31,7 @@
         					{% for books in user_books %}
         					<article class="blog__post d-flex flex-wrap">
         						<div class="">
-        							<a href="blog-details.html">
+        							<a href="{% url 'books:detail' books.id %}">
         								<img src="{{ books.photo.url }}" alt="blog images" width="150px" height="150">
 
         							</a>
@@ -49,7 +49,7 @@
         							</ul>
         							
 									<div class="blog__btn">
-        								<a class="shopbtn" href="blog-details.html">Batafsil</a>
+        								<a class="shopbtn" href="{% url 'books:detail' books.id %}">Batafsil</a>
         							</div>
         						</div>
         					</article>
@@ -81,64 +81,27 @@
         					<!-- End Single Widget -->
         					<!-- Start Single Widget -->
         					<aside class="widget recent_widget">
-        						<h3 class="widget-title">Recent</h3>
+        						<h3 class="widget-title">Mening sharxlarim </h3>
         						<div class="recent-posts">
         							<ul>
         								<li>
-        									<div class="post-wrapper d-flex">
+											{% for comment in comment %}
+        									<div class="post-wrapper d-flex" style="border: 0.5px  ; ">
         										<div class="thumb">
-        											<a href="blog-details.html"><img src="{% static 'my_app/images/blog/sm-img/1.jpg'%}" alt="blog images"></a>
+        											<a href="blog-details.html"><img src="{{ comment.books.photo.url }}" alt="blog images"></a>
         										</div>
         										<div class="content">
-        											<h4><a href="blog-details.html">Blog image post</a></h4>
-        											<p>	March 10, 2015</p>
+        											<h4><a href="blog-details.html">{{comment.books.name}}</a></h4>
+        											
+													<p style="border: 0.5px solid grey; text-align: center;">{{comment.comment}}</p>
+
+													<p>	{{comment.created_at}}</p>
+
         										</div>
         									</div>
+											{% endfor %}
         								</li>
         								<li>
-        									<div class="post-wrapper d-flex">
-        										<div class="thumb">
-        											<a href="blog-details.html"><img src="{% static 'my_app/images/blog/sm-img/2.jpg'%}" alt="blog images"></a>
-        										</div>
-        										<div class="content">
-        											<h4><a href="blog-details.html">Post with Gallery</a></h4>
-        											<p>	March 10, 2015</p>
-        										</div>
-        									</div>
-        								</li>
-        								<li>
-        									<div class="post-wrapper d-flex">
-        										<div class="thumb">
-        											<a href="blog-details.html"><img src="{% static 'my_app/images/blog/sm-img/3.jpg'%}" alt="blog images"></a>
-        										</div>
-        										<div class="content">
-        											<h4><a href="blog-details.html">Post with Video</a></h4>
-        											<p>	March 10, 2015</p>
-        										</div>
-        									</div>
-        								</li>
-        								<li>
-        									<div class="post-wrapper d-flex">
-        										<div class="thumb">
-        											<a href="blog-details.html"><img src="{% static 'my_app/images/blog/sm-img/4.jpg'%}" alt="blog images"></a>
-        										</div>
-        										<div class="content">
-        											<h4><a href="blog-details.html">Maecenas ultricies</a></h4>
-        											<p>	March 10, 2015</p>
-        										</div>
-        									</div>
-        								</li>
-        								<li>
-        									<div class="post-wrapper d-flex">
-        										<div class="thumb">
-        											<a href="blog-details.html"><img src="{% static 'my_app/images/blog/sm-img/5.jpg'%}" alt="blog images"></a>
-        										</div>
-        										<div class="content">
-        											<h4><a href="blog-details.html">Blog image post</a></h4>
-        											<p>	March 10, 2015</p>
-        										</div>
-        									</div>
-        								</li>
         							</ul>
         						</div>
         					</aside>
@@ -148,59 +111,17 @@
         						<h3 class="widget-title">Comments</h3>
         						<ul>
         							<li>
+										{% for comment in user_comments %}
         								<div class="post-wrapper">
         									<div class="thumb">
         										<img src="{% static 'my_app/images/blog/comment/1.jpeg" alt="Comment images">
         									</div>
         									<div class="content">
         										<p>demo says:</p>
-        										<a href="#">Quisque semper nunc vitae...</a>
+        										<a href="#">{{comment}}</a>
         									</div>
         								</div>
-        							</li>
-        							<li>
-        								<div class="post-wrapper">
-        									<div class="thumb">
-        										<img src="{% static 'my_app/images/blog/comment/1.jpeg" alt="Comment images">
-        									</div>
-        									<div class="content">
-        										<p>Admin says:</p>
-        										<a href="#">Curabitur aliquet pulvinar...</a>
-        									</div>
-        								</div>
-        							</li>
-        							<li>
-        								<div class="post-wrapper">
-        									<div class="thumb">
-        										<img src="{% static 'my_app/images/blog/comment/1.jpeg" alt="Comment images">
-        									</div>
-        									<div class="content">
-        										<p>Irin says:</p>
-        										<a href="#">Quisque semper nunc vitae...</a>
-        									</div>
-        								</div>
-        							</li>
-        							<li>
-        								<div class="post-wrapper">
-        									<div class="thumb">
-        										<img src="{% static 'my_app/images/blog/comment/1.jpeg" alt="Comment images">
-        									</div>
-        									<div class="content">
-        										<p>Boighor says:</p>
-        										<a href="#">Quisque semper nunc vitae...</a>
-        									</div>
-        								</div>
-        							</li>
-        							<li>
-        								<div class="post-wrapper">
-        									<div class="thumb">
-        										<img src="{% static 'my_app/images/blog/comment/1.jpeg" alt="Comment images">
-        									</div>
-        									<div class="content">
-        										<p>demo says:</p>
-        										<a href="#">Quisque semper nunc vitae...</a>
-        									</div>
-        								</div>
+										{% endfor %}
         							</li>
         						</ul>
         					</aside>

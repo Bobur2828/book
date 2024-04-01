@@ -100,9 +100,12 @@ def shop_right_sidebar(request):
 def my_books(request):
     user=request.user
     user_books=Books.objects.filter(custom_user=request.user)
+    comment=Comment.objects.filter(user=user).order_by('-created_at')
+    user_comments=Comment.objects.filter(user=user)    
+
 
     # books=Books.objects.filter(user=user
-    return render(request, 'my_app/my_books.html',{'user_books':user_books})
+    return render(request, 'my_app/my_books.html',{'user_books':user_books,'comment':comment,'user_comments':user_comments})
 
 
 def team(request):
