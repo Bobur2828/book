@@ -161,8 +161,8 @@
 													{% if user.is_authenticated%}
 													<div class="setting__menu">
 														<span><a href="{% url 'users:profile'%}">Mening sahifam</a></span>
-														<span><a href="#">Mening kitoblarim</a></span>
-														<span><a href="#">Mening izohlarim</a></span>
+														<span><a href="{% url 'books:my_books'%}">Mening kitoblarim</a></span>
+														<span><a href="">Mening izohlarim</a></span>
 														<span><a href="{% url 'users:logout' %}">Chiqish</a></span>
 
 														

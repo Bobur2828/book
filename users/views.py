@@ -57,9 +57,12 @@ def Yuklash(request):
         'author': Author.objects.all()
     }
     if request.method == "POST":
+        u=request.user.id
         r = request.POST
         f = request.FILES
         print(r)
+        print(u)
+
         category_id = r['category']
         photo = f['photo']
         name = r['name']
@@ -67,6 +70,7 @@ def Yuklash(request):
         description = r['description']
         pdf = f['pdf']
         muallif = r['muallif']
+        custom_user=request.user
         
         if author == '':
             muallif_base = Author.objects.create(name=muallif)
@@ -74,11 +78,11 @@ def Yuklash(request):
             avtor_id = get_object_or_404(Author, id=author_id)
 
             category = get_object_or_404(Category, id=category_id)
-            yaratish = Books.objects.create(category=category, name=name, author=avtor_id, photo=photo, pdf=pdf, description=description)
+            yaratish = Books.objects.create(category=category, name=name, author=avtor_id, photo=photo, pdf=pdf, description=description,custom_user=custom_user)
             return redirect('/')
         else:
             category = get_object_or_404(Category, id=category_id)
-            Books.objects.create(category=category, name=name, author_id=author, photo=photo, pdf=pdf, description=description)
+            Books.objects.create(category=category, name=name, author_id=author, photo=photo, pdf=pdf, description=description,custom_user=custom_user)
             return redirect('/')
     else:
         return render(request, 'yuklash1.html', context)

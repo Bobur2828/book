@@ -18,6 +18,8 @@ urlpatterns = [
     path('index-box/', views.index_box, name='index_box'),
     path('my-account/', views.my_account, name='my_account'),
     path('portfolio/', views.portfolio, name='portfolio'),
+    path('my_books/', views.my_books, name='my_books'),
+
     path('portfolio-details/', views.portfolio_details, name='portfolio_details'),
     path('portfolio-three-column/', views.portfolio_three_column, name='portfolio_three_column'),
     path('shop-grid/', views.shop_grid, name='shop_grid'),

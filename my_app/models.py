@@ -10,6 +10,8 @@ class Books(models.Model):
     photo=models.ImageField(upload_to='books/photo', verbose_name="kitob rasmini kiriting")
     category = models.ForeignKey('Category', verbose_name='Kategoriyani tanlang', on_delete=models.CASCADE, related_name='books')
     author = models.ForeignKey('Author',verbose_name='Muallifni tanlang', on_delete=models.CASCADE, blank=True, null=True, related_name='author')
+    custom_user = models.ForeignKey(User,verbose_name='Muallifni tanlang', on_delete=models.CASCADE, blank=True, null=True, related_name='custom')
+
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     def __str__(self):
