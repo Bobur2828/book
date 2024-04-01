@@ -3,12 +3,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect,get_object_or_404
 from django.urls import reverse
 from django.views.generic import ListView, View
-from .forms import AddCommentForm
+from .forms import AddCommentForm,CommentUpdateForm
 from django.shortcuts import render
 from .models import Slider,Books,Category, Ourteam,Comment
 import requests
 from django.contrib import messages
-
+from django.http import HttpResponseForbidden
 def index(request):
     sliders=Slider.objects.all()
     books=Books.objects.all()
@@ -167,6 +167,7 @@ class AddCommentView(LoginRequiredMixin,View):
     def post(self, request,id):
         form=AddCommentForm(request.POST)
         books=Books.objects.filter(id=id)
+        
         if form.is_valid():
             books=Books.objects.get(id=id)
             Comment.objects.create(
@@ -193,3 +194,37 @@ def SendMsg(request):
     messages.success(request, (f"Xabaringiz muvaffaqiyatli yuborildi!!!"))
 
     return redirect('books:index',)
+
+
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    
+    if comment.user == request.user:
+        comment.delete()
+        messages.success(request, "Xabar o'chirildi!")
+        return redirect('books:detail', comment.books.id)
+    
+    messages.error(request, "Ushbu xabarga o'chirish huquqi yo'q")
+    return redirect('books:detail', comment.books.id)
+
+
+
+class CommentUpdate(View):
+    def get(self, request, comment_id):
+        comment = get_object_or_404(Comment, id=comment_id)
+        if comment.user == request.user:
+            form = CommentUpdateForm(instance=comment)
+            return render(request, 'my_app/comment_update.html', {'form': form, 'comment_id': comment_id})
+        messages.success(request, "Sizda begona sharxni izohlash huquqingiz yoq")
+        return redirect('books:detail', comment.books.id)
+
+    
+    def post(self, request, comment_id):
+        comment = get_object_or_404(Comment, id=comment_id)
+        if comment.user == request.user:
+            form = CommentUpdateForm(request.POST, instance=comment)
+            if form.is_valid():
+                form.save()
+                return redirect('books:detail', comment.books.id)
+            return render(request, 'my_app/comment_update.html', {'form': form, 'comment_id': comment_id})
+        return HttpResponseForbidden("Sizga bu operatsiyani bajarishga ruxsat yo'q")

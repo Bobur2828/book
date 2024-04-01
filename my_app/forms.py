@@ -7,3 +7,9 @@ class AddCommentForm(forms.ModelForm):
     class Meta:
         model=Comment
         fields=['comment','stars_given']
+
+
+class CommentUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['comment','stars_given']

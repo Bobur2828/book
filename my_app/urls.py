@@ -33,6 +33,8 @@ urlpatterns = [
     path('detail/<int:id>/', views.BooksDetailView.as_view(), name='detail'),
     path('add_comment/<int:id>/', views.AddCommentView.as_view(),name='AddCommentView'),
     path('send-msg/', views.SendMsg),
+    path('delete/<int:comment_id>/', views.delete_comment, name='delete_comment'),
+    path('update/<int:comment_id>/',views.CommentUpdate.as_view(),name='update_comment')
 
 
 ]
