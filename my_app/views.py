@@ -101,7 +101,8 @@ def my_books(request):
     user=request.user
     user_books=Books.objects.filter(custom_user=request.user)
     comment=Comment.objects.filter(user=user).order_by('-created_at')
-    user_comments=Comment.objects.filter(user=user)    
+    user_comments = Comment.objects.filter(books__in=user_books)
+
 
 
     # books=Books.objects.filter(user=user
@@ -191,4 +192,4 @@ def SendMsg(request):
     requests.get(url + '6516071223' + '&text=' + text)
     messages.success(request, (f"Xabaringiz muvaffaqiyatli yuborildi!!!"))
 
-    return redirect('books:index')
+    return redirect('books:index',)
