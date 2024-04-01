@@ -143,14 +143,21 @@ class BooksDetailView(View):
         author = books.author
         author_books = Books.objects.filter(author=author)
         stars=Comment.objects.filter(books=books)
-        print(len(stars))
-        star=[]
-        for i in stars:
-            integer_value = int(stars)
-            star.append(integer_value)
-        print(star)
+        star=stars.values('stars_given')
+        
+        stars_given_values = [item['stars_given'] for item in star]
+        result = sum(stars_given_values)
+        try:
+            result1 = round(result / len(stars_given_values))
+        except ZeroDivisionError:
+            result1 = result
+        
+        print(result1)
 
-        return render(request, 'my_app/single-product.html', {'form': form, 'books': books, 'author_books': author_books})
+
+        
+        
+        return render(request, 'my_app/single-product.html', {'form': form, 'books': books, 'author_books': author_books,'result1':result1})
 class AddCommentView(LoginRequiredMixin,View):
     def post(self, request,id):
         form=AddCommentForm(request.POST)
