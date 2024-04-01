@@ -97,9 +97,11 @@ def shop_no_sidebar(request):
 def shop_right_sidebar(request):
     return render(request, 'my_app/shop-right-sidebar.html')
 def my_books(request):
-    user1=request.user
+    user=request.user
+    user_books=Books.objects.filter(custom_user=request.user)
+
     # books=Books.objects.filter(user=user
-    return render(request, 'my_app/my_books.html')
+    return render(request, 'my_app/my_books.html',{'user_books':user_books})
 
 
 def team(request):
