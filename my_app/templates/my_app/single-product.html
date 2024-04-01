@@ -30,7 +30,7 @@
         							<div class="wn__fotorama__wrapper">
 	        							<div class="fotorama wn__fotorama__action" data-nav="thumbs">
 		        							  <a href="1.jpg'%}"><img src="{{ books.photo.url}}" alt=""></a>
-		        							  
+
 	        							</div>
         							</div>
         						</div>
@@ -45,31 +45,11 @@
         								</div>
         								<div class="product-reviews-summary d-flex">
         									<ul class="rating-summary d-flex">
-    											{% if result1 == 1%}
-												<li><i class="zmdi zmdi-star-outline"></i></li>
-												{% elif result1 == 2%}
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-												{% elif result1 == 3%}
-												<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-												{% elif result1 == 4%}
     											<li><i class="zmdi zmdi-star-outline"></i></li>
     											<li><i class="zmdi zmdi-star-outline"></i></li>
     											<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-												{% elif result1 == 5%}
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-
-
-
-    										
-												{% endif %}
+    											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
+    											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
         									</ul>
         									<div class="reviews-actions d-flex">
         										<a href="#">( Sharhlar:{{ books.comments.count }})</a>
@@ -86,7 +66,7 @@
 												<a class="email" href="#"></a>
         									</div>
 											<div  y class="col-6">
-												<a style="border:2px solid black; padding:10px; background-color:secondary; color:white" class="download" href="{{ books.pdf.url }}" download=""> Yuklab olish </a>
+												<a style="border:2px solid black; padding:10px; background-color:grey; color:white" class="download" href="{{ books.pdf.url }}" download=""> Yuklab olish </a>
 											</div>
 
 
@@ -104,8 +84,6 @@
 							<div class="pro_details_nav nav justify-content-start" role="tablist">
 
 
-								<a class="nav-item nav-link  " data-toggle="tab" href="#nav-details" role="tab">Tafsilotlar</a>
-
 								<a class="nav-item nav-link  " data-toggle="tab" href="#nav-review" role="tab">Sharhlar</a>
 								<div class="tab__container">
 									<!-- Start Single Tab Content -->
@@ -120,7 +98,7 @@
 	                        	<!-- End Single Tab Content -->
 	                        	<!-- Start Single Tab Content -->
 	                        	<div class="container">
-									<div class="pro__tab_label tab-pane fade" id="nav-review" role="tabpanel">
+									<div >
 										<div class="review__attribute">
 											<form action="{% url 'books:AddCommentView' books.id %}" method="post">
 												{% csrf_token %}
@@ -145,17 +123,23 @@
 											{% for comment in books.comments.all %}
 												<div class="review__item">
 
+													<div class="review__content" style="border: 1px solid; border-radius:20px; padding:20px; margin-bottom:20px" >
 
-													<div class="review__content" style="border: 1px solid; border-radius:30px; padding:40px; margin-bottom:20px" >
 
 														<div class="row">
 															<div class="col-4">
 																<img style="border-radius: 50%" src="{% if comment.user.image %}{{ comment.user.image.url }}{% else %}https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg{% endif %}" alt="avatar" width="100">
+																<p>{{ comment.user.first_name }}</p>
 															</div>
 															<div class="col-5">
 
+																<h2 style="border: 1px solid; border-radius:10px; padding-left:10px; margin-top:20px; padding-top:10px; padding-bottom:10px; ; width:500px">{{ comment.comment }}</h2>
 
-																<h2 style="border: 1px solid; border-radius:30px; padding-left:10px; margin-top:20px; padding-top:10px; padding-bottom:10px; ; width:500px">{{ comment.comment }}</h2>
+
+
+																<ul>
+																	<li style="test-align:end"><i class="zmdi zmdi-delete"></i></li>
+																</ul>
 
 															</div>
 
@@ -202,14 +186,10 @@
 																	</ul>
 																</div>
 
-
+																	<p>Review by {{ comment.author }}</p>
+																	<p>Posted on {{ comment.created_at|date:"m/d/Y" }}</p>
 															</div>
-															<div class="review-content">
-																<p>{{ comment.user.first_name }}</p>
 
-																<p>Review by {{ comment.author }}</p>
-																<p>Posted on {{ comment.created_at|date:"m/d/Y" }}</p>
-															</div>
 														</div>
 													</div>
 												</div>
@@ -252,12 +232,10 @@
 												<h4><a href="single-product.html">{{ book.name }}</a></h4>
 												<ul class="rating d-flex">
 													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
 													<li><i class="fa fa-star-o"></i></li>
-									
-													<li><i class="fa fa-star-o"></i></li>		
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-												
+													<li><i class="fa fa-star-o"></i></li>
 												</ul>
 											</div>
 										</div>
@@ -441,4 +419,4 @@
 			</div>
 		</div>
 		<!-- End Brand Area -->
-{% endblock content%}
+{% endblock content %}
