@@ -28,64 +28,13 @@
         					<aside class="wedget__categories poroduct--cat">
         						<h3 class="wedget__title">Product Categories</h3>
         						<ul>
+									<li ><a href="/shop-grid/">Hamma kitoblar</a> </li>
 									{% for category in categorys%}
-        							<li><a href="#">{{ category.name}} <span>(3)</span></a></li>
+        							<li><a href="/category/{{ category.id }}/">{{ category.name}} <span>({{ category.books.count }})</span></a></li>
         							{% endfor%}
         						</ul>
         					</aside>
-        					<aside class="wedget__categories pro--range">
-        						<h3 class="wedget__title">Filter by price</h3>
-        						<div class="content-shopby">
-        						    <div class="price_filter s-filter clear">
-        						        <form action="#" method="GET">
-        						            <div id="slider-range"></div>
-        						            <div class="slider__range--output">
-        						                <div class="price__output--wrap">
-        						                    <div class="price--output">
-        						                        <span>Price :</span><input type="text" id="amount" readonly="">
-        						                    </div>
-        						                    <div class="price--filter">
-        						                        <a href="#">Filter</a>
-        						                    </div>
-        						                </div>
-        						            </div>
-        						        </form>
-        						    </div>
-        						</div>
-        					</aside>
-        					<aside class="wedget__categories poroduct--compare">
-        						<h3 class="wedget__title">Compare</h3>
-        						<ul>
-        							<li><a href="#">x</a><a href="#">Condimentum posuere</a></li>
-        							<li><a href="#">x</a><a href="#">Condimentum posuere</a></li>
-        							<li><a href="#">x</a><a href="#">Dignissim venenatis</a></li>
-        						</ul>
-        					</aside>
-        					<aside class="wedget__categories poroduct--tag">
-        						<h3 class="wedget__title">Product Tags</h3>
-        						<ul>
-        							<li><a href="#">Biography</a></li>
-        							<li><a href="#">Business</a></li>
-        							<li><a href="#">Cookbooks</a></li>
-        							<li><a href="#">Health & Fitness</a></li>
-        							<li><a href="#">History</a></li>
-        							<li><a href="#">Mystery</a></li>
-        							<li><a href="#">Inspiration</a></li>
-        							<li><a href="#">Religion</a></li>
-        							<li><a href="#">Fiction</a></li>
-        							<li><a href="#">Fantasy</a></li>
-        							<li><a href="#">Music</a></li>
-        							<li><a href="#">Toys</a></li>
-        							<li><a href="#">Hoodies</a></li>
-        						</ul>
-        					</aside>
-        					<aside class="wedget__categories sidebar--banner">
-								<img src="{% static 'my_app/images/others/banner_left.jpg'%}" alt="banner images">
-								<div class="text">
-									<h2>new products</h2>
-									<h6>save up to <br> <strong>40%</strong>off</h6>
-								</div>
-        					</aside>
+
         				</div>
         			</div>
         			<div class="col-lg-9 col-12 order-1 order-lg-2">
@@ -114,19 +63,14 @@
         				<div class="tab__container">
 	        				<div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
 	        					<div class="row">
-	        						<!-- Start Single Product -->
-		        					<div class="col-lg-4 col-md-4 col-sm-6 col-12">
+	        						{% for i in book %}
+		        						<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product">
 			        						<div class="product__thumb">
-			        							<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/1.jpg'%}" alt="product image"></a>
-			        							<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/2.jpg'%}" alt="product image"></a>
-			        							<div class="new__box">
-			        								<span class="new-label">Hot</span>
-			        							</div>
-			        							<ul class="prize position__right__bottom d-flex">
-			        								<li>$40.00</li>
-			        								<li class="old_prize">$55.00</li>
-			        							</ul>
+			        							<a style="height:400px" class="first__img" href="single-product.html"><img src="{{ i.photo.url }}" alt="product image"></a>
+			        							<a class="second__img animation1" href="single-product.html"><img src="{{ i.photo.url }}" alt="product image"></a>
+
+
 			        							<div class="action">
 			        								<div class="actions_inner">
 			        									<ul class="add_to_links">
@@ -139,7 +83,7 @@
 			        							</div>
 			        						</div>
 			        						<div class="product__content">
-			        							<h4><a href="single-product.html">Strive Shoulder Pack</a></h4>
+			        							<h4><a href="/single-product/">{{ i.name }}</a></h4>
 			        							<ul class="rating d-flex">
 			        								<li class="on"><i class="fa fa-star-o"></i></li>
 			        								<li class="on"><i class="fa fa-star-o"></i></li>
@@ -150,411 +94,7 @@
 			        						</div>
 			        					</div>
 		        					</div>
-		        					<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-		        					<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-			        					<div class="product">
-			        						<div class="product__thumb">
-			        							<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/2.jpg'%}" alt="product image"></a>
-			        							<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/8.jpg'%}" alt="product image"></a>
-			        							<div class="new__box">
-			        								<span class="new-label">New</span>
-			        							</div>
-			        							<ul class="prize position__right__bottom d-flex">
-			        								<li>$40.00</li>
-			        								<li class="old_prize">$55.00</li>
-			        							</ul>
-			        							<div class="action">
-			        								<div class="actions_inner">
-			        									<ul class="add_to_links">
-			        										<li><a class="cart" href="cart.html"></a></li>
-			        										<li><a class="wishlist" href="wishlist.html"></a></li>
-			        										<li><a class="compare" href="compare.html"></a></li>
-			        										<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-			        									</ul>
-			        								</div>
-			        							</div>
-			        						</div>
-			        						<div class="product__content">
-			        							<h4><a href="single-product.html">Voyage Yoga Bag</a></h4>
-			        							<ul class="rating d-flex">
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        							</ul>
-			        						</div>
-			        					</div>
-		        					</div>
-		        					<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-		        					<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-			        					<div class="product">
-			        						<div class="product__thumb">
-			        							<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/3.jpg'%}" alt="product image"></a>
-			        							<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/2.jpg'%}" alt="product image"></a>
-			        							<div class="new__box">
-			        								<span class="new-label">Hot</span>
-			        							</div>
-			        							<ul class="prize position__right__bottom d-flex">
-			        								<li>$40.00</li>
-			        								<li class="old_prize">$55.00</li>
-			        							</ul>
-			        							<div class="action">
-			        								<div class="actions_inner">
-			        									<ul class="add_to_links">
-			        										<li><a class="cart" href="cart.html"></a></li>
-			        										<li><a class="wishlist" href="wishlist.html"></a></li>
-			        										<li><a class="compare" href="compare.html"></a></li>
-			        										<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-			        									</ul>
-			        								</div>
-			        							</div>
-			        						</div>
-			        						<div class="product__content">
-			        							<h4><a href="single-product.html">Impulse Duffle</a></h4>
-			        							<ul class="rating d-flex">
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        							</ul>
-			        						</div>
-			        					</div>
-		        					</div>
-		        					<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-		        					<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-			        					<div class="product">
-			        						<div class="product__thumb">
-			        							<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/4.jpg'%}" alt="product image"></a>
-			        							<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/2.jpg'%}" alt="product image"></a>
-			        							<ul class="prize position__right__bottom d-flex">
-			        								<li>$60.00</li>
-			        								<li class="old_prize">$55.00</li>
-			        							</ul>
-			        							<div class="action">
-			        								<div class="actions_inner">
-			        									<ul class="add_to_links">
-			        										<li><a class="cart" href="cart.html"></a></li>
-			        										<li><a class="wishlist" href="wishlist.html"></a></li>
-			        										<li><a class="compare" href="compare.html"></a></li>
-			        										<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-			        									</ul>
-			        								</div>
-			        							</div>
-			        						</div>
-			        						<div class="product__content">
-			        							<h4><a href="single-product.html">Beginner's Yoga</a></h4>
-			        							<ul class="rating d-flex">
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        							</ul>
-			        						</div>
-			        					</div>
-		        					</div>
-		        					<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-		        					<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-			        					<div class="product">
-			        						<div class="product__thumb">
-			        							<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/5.jpg'%}" alt="product image"></a>
-			        							<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/3.jpg'%}" alt="product image"></a>
-			        							<div class="new__box">
-			        								<span class="new-label">Hot</span>
-			        							</div>
-			        							<ul class="prize position__right__bottom d-flex">
-			        								<li>$40.00</li>
-			        								<li class="old_prize">$55.00</li>
-			        							</ul>
-			        							<div class="action">
-			        								<div class="actions_inner">
-			        									<ul class="add_to_links">
-			        										<li><a class="cart" href="cart.html"></a></li>
-			        										<li><a class="wishlist" href="wishlist.html"></a></li>
-			        										<li><a class="compare" href="compare.html"></a></li>
-			        										<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-			        									</ul>
-			        								</div>
-			        							</div>
-			        						</div>
-			        						<div class="product__content">
-			        							<h4><a href="single-product.html">Strive Shoulder Pack</a></h4>
-			        							<ul class="rating d-flex">
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        							</ul>
-			        						</div>
-			        					</div>
-		        					</div>
-		        					<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-		        					<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-			        					<div class="product">
-			        						<div class="product__thumb">
-			        							<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/6.jpg'%}" alt="product image"></a>
-			        							<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/3.jpg'%}" alt="product image"></a>
-			        							<div class="new__box">
-			        								<span class="new-label">Hot</span>
-			        							</div>
-			        							<ul class="prize position__right__bottom d-flex">
-			        								<li>$40.00</li>
-			        								<li class="old_prize">$55.00</li>
-			        							</ul>
-			        							<div class="action">
-			        								<div class="actions_inner">
-			        									<ul class="add_to_links">
-			        										<li><a class="cart" href="cart.html"></a></li>
-			        										<li><a class="wishlist" href="wishlist.html"></a></li>
-			        										<li><a class="compare" href="compare.html"></a></li>
-			        										<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-			        									</ul>
-			        								</div>
-			        							</div>
-			        						</div>
-			        						<div class="product__content">
-			        							<h4><a href="single-product.html">Strive Shoulder Pack</a></h4>
-			        							<ul class="rating d-flex">
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        							</ul>
-			        						</div>
-			        					</div>
-		        					</div>
-		        					<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-		        					<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-			        					<div class="product">
-			        						<div class="product__thumb">
-			        							<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/7.jpg'%}" alt="product image"></a>
-			        							<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/2.jpg'%}" alt="product image"></a>
-			        							<div class="new__box">
-			        								<span class="new-label">new</span>
-			        							</div>
-			        							<ul class="prize position__right__bottom d-flex">
-			        								<li>$40.00</li>
-			        								<li class="old_prize">$55.00</li>
-			        							</ul>
-			        							<div class="action">
-			        								<div class="actions_inner">
-			        									<ul class="add_to_links">
-			        										<li><a class="cart" href="cart.html"></a></li>
-			        										<li><a class="wishlist" href="wishlist.html"></a></li>
-			        										<li><a class="compare" href="compare.html"></a></li>
-			        										<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-			        									</ul>
-			        								</div>
-			        							</div>
-			        						</div>
-			        						<div class="product__content">
-			        							<h4><a href="single-product.html">Strive Shoulder Pack</a></h4>
-			        							<ul class="rating d-flex">
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        							</ul>
-			        						</div>
-			        					</div>
-		        					</div>
-		        					<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-		        					<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-			        					<div class="product">
-			        						<div class="product__thumb">
-			        							<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/8.jpg'%}" alt="product image"></a>
-			        							<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/4.jpg'%}" alt="product image"></a>
-			        							<div class="new__box">
-			        								<span class="new-label">New</span>
-			        							</div>
-			        							<ul class="prize position__right__bottom d-flex">
-			        								<li>$70.00</li>
-			        								<li class="old_prize">$55.00</li>
-			        							</ul>
-			        							<div class="action">
-			        								<div class="actions_inner">
-			        									<ul class="add_to_links">
-			        										<li><a class="cart" href="cart.html"></a></li>
-			        										<li><a class="wishlist" href="wishlist.html"></a></li>
-			        										<li><a class="compare" href="compare.html"></a></li>
-			        										<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-			        									</ul>
-			        								</div>
-			        							</div>
-			        						</div>
-			        						<div class="product__content">
-			        							<h4><a href="single-product.html">Impulse Duffle</a></h4>
-			        							<ul class="rating d-flex">
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        							</ul>
-			        						</div>
-			        					</div>
-		        					</div>
-		        					<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-		        					<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-			        					<div class="product">
-			        						<div class="product__thumb">
-			        							<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/9.jpg'%}" alt="product image"></a>
-			        							<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/2.jpg'%}" alt="product image"></a>
-			        							<div class="new__box">
-			        								<span class="new-label">Hot</span>
-			        							</div>
-			        							<ul class="prize position__right__bottom d-flex">
-			        								<li>$40.00</li>
-			        								<li class="old_prize">$55.00</li>
-			        							</ul>
-			        							<div class="action">
-			        								<div class="actions_inner">
-			        									<ul class="add_to_links">
-			        										<li><a class="cart" href="cart.html"></a></li>
-			        										<li><a class="wishlist" href="wishlist.html"></a></li>
-			        										<li><a class="compare" href="compare.html"></a></li>
-			        										<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-			        									</ul>
-			        								</div>
-			        							</div>
-			        						</div>
-			        						<div class="product__content">
-			        							<h4><a href="single-product.html">Strive Shoulder Pack</a></h4>
-			        							<ul class="rating d-flex">
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        							</ul>
-			        						</div>
-			        					</div>
-		        					</div>
-		        					<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-		        					<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-			        					<div class="product">
-			        						<div class="product__thumb">
-			        							<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/10.jpg'%}" alt="product image"></a>
-			        							<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/2.jpg'%}" alt="product image"></a>
-			        							<div class="new__box">
-			        								<span class="new-label">new</span>
-			        							</div>
-			        							<ul class="prize position__right__bottom d-flex">
-			        								<li>$40.00</li>
-			        								<li class="old_prize">$55.00</li>
-			        							</ul>
-			        							<div class="action">
-			        								<div class="actions_inner">
-			        									<ul class="add_to_links">
-			        										<li><a class="cart" href="cart.html"></a></li>
-			        										<li><a class="wishlist" href="wishlist.html"></a></li>
-			        										<li><a class="compare" href="compare.html"></a></li>
-			        										<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-			        									</ul>
-			        								</div>
-			        							</div>
-			        						</div>
-			        						<div class="product__content">
-			        							<h4><a href="single-product.html">Strive Shoulder Pack</a></h4>
-			        							<ul class="rating d-flex">
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        							</ul>
-			        						</div>
-			        					</div>
-		        					</div>
-		        					<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-		        					<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-			        					<div class="product">
-			        						<div class="product__thumb">
-			        							<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/11.jpg'%}" alt="product image"></a>
-			        							<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/4.jpg'%}" alt="product image"></a>
-			        							<div class="new__box">
-			        								<span class="new-label">New</span>
-			        							</div>
-			        							<ul class="prize position__right__bottom d-flex">
-			        								<li>$70.00</li>
-			        								<li class="old_prize">$55.00</li>
-			        							</ul>
-			        							<div class="action">
-			        								<div class="actions_inner">
-			        									<ul class="add_to_links">
-			        										<li><a class="cart" href="cart.html"></a></li>
-			        										<li><a class="wishlist" href="wishlist.html"></a></li>
-			        										<li><a class="compare" href="compare.html"></a></li>
-			        										<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-			        									</ul>
-			        								</div>
-			        							</div>
-			        						</div>
-			        						<div class="product__content">
-			        							<h4><a href="single-product.html">Impulse Duffle</a></h4>
-			        							<ul class="rating d-flex">
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        							</ul>
-			        						</div>
-			        					</div>
-		        					</div>
-		        					<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-		        					<div class="col-lg-4 col-md-4 col-sm-6 col-12">
-			        					<div class="product">
-			        						<div class="product__thumb">
-			        							<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/12.jpg'%}" alt="product image"></a>
-			        							<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/2.jpg'%}" alt="product image"></a>
-			        							<div class="new__box">
-			        								<span class="new-label">Hot</span>
-			        							</div>
-			        							<ul class="prize position__right__bottom d-flex">
-			        								<li>$40.00</li>
-			        								<li class="old_prize">$55.00</li>
-			        							</ul>
-			        							<div class="action">
-			        								<div class="actions_inner">
-			        									<ul class="add_to_links">
-			        										<li><a class="cart" href="cart.html"></a></li>
-			        										<li><a class="wishlist" href="wishlist.html"></a></li>
-			        										<li><a class="compare" href="compare.html"></a></li>
-			        										<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
-			        									</ul>
-			        								</div>
-			        							</div>
-			        						</div>
-			        						<div class="product__content">
-			        							<h4><a href="single-product.html">Strive Shoulder Pack</a></h4>
-			        							<ul class="rating d-flex">
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li class="on"><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        								<li><i class="fa fa-star-o"></i></li>
-			        							</ul>
-			        						</div>
-			        					</div>
-		        					</div>
-		        					<!-- End Single Product -->
+		        					{% endfor %}
 	        					</div>
 	        					<ul class="wn__pagination">
 	        						<li class="active"><a href="#">1</a></li>
@@ -566,14 +106,14 @@
 	        				</div>
 	        				<div class="shop-grid tab-pane fade" id="nav-list" role="tabpanel">
 	        					<div class="list__view__wrapper">
-	        						<!-- Start Single Product -->
-	        						<div class="list__view">
+	        						{% for b in book %}
+	        							<div class="list__view">
 	        							<div class="thumb">
-	        								<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/1.jpg'%}" alt="product images"></a>
-	        								<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/2.jpg'%}" alt="product images"></a>
+	        								<a class="first__img" href="single-product.html"><img src="{{ b.photo.url }}" alt="product images"></a>
+	        								<a class="second__img animation1" href="single-product.html"><img src="{{ b.photo.url }}" alt="product images"></a>
 	        							</div>
 	        							<div class="content">
-	        								<h2><a href="single-product.html">adipiscing</a></h2>
+	        								<h2><a href="single-product.html">{{ b.name }}</a></h2>
 	        								<ul class="rating d-flex">
 	        									<li class="on"><i class="fa fa-star-o"></i></li>
 	        									<li class="on"><i class="fa fa-star-o"></i></li>
@@ -595,127 +135,7 @@
 
 	        							</div>
 	        						</div>
-	        						<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-	        						<div class="list__view mt--40">
-	        							<div class="thumb">
-	        								<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/2.jpg'%}" alt="product images"></a>
-	        								<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/4.jpg'%}" alt="product images"></a>
-	        							</div>
-	        							<div class="content">
-	        								<h2><a href="single-product.html">Voyage Yoga Bag</a></h2>
-	        								<ul class="rating d-flex">
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li><i class="fa fa-star-o"></i></li>
-	        									<li><i class="fa fa-star-o"></i></li>
-	        								</ul>
-	        								<ul class="prize__box">
-	        									<li>$111.00</li>
-	        									<li class="old__prize">$220.00</li>
-	        								</ul>
-	        								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-	        								<ul class="cart__action d-flex">
-	        									<li class="cart"><a href="cart.html">Add to cart</a></li>
-	        									<li class="wishlist"><a href="cart.html"></a></li>
-	        									<li class="compare"><a href="cart.html"></a></li>
-	        								</ul>
-
-	        							</div>
-	        						</div>
-	        						<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-	        						<div class="list__view mt--40">
-	        							<div class="thumb">
-	        								<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/3.jpg'%}" alt="product images"></a>
-	        								<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/6.jpg'%}" alt="product images"></a>
-	        							</div>
-	        							<div class="content">
-	        								<h2><a href="single-product.html">Impulse Duffle</a></h2>
-	        								<ul class="rating d-flex">
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li><i class="fa fa-star-o"></i></li>
-	        									<li><i class="fa fa-star-o"></i></li>
-	        								</ul>
-	        								<ul class="prize__box">
-	        									<li>$111.00</li>
-	        									<li class="old__prize">$220.00</li>
-	        								</ul>
-	        								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-	        								<ul class="cart__action d-flex">
-	        									<li class="cart"><a href="cart.html">Add to cart</a></li>
-	        									<li class="wishlist"><a href="cart.html"></a></li>
-	        									<li class="compare"><a href="cart.html"></a></li>
-	        								</ul>
-
-	        							</div>
-	        						</div>
-	        						<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-	        						<div class="list__view mt--40">
-	        							<div class="thumb">
-	        								<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/4.jpg'%}" alt="product images"></a>
-	        								<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/6.jpg'%}" alt="product images"></a>
-	        							</div>
-	        							<div class="content">
-	        								<h2><a href="single-product.html">Strive Shoulder Pack</a></h2>
-	        								<ul class="rating d-flex">
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li><i class="fa fa-star-o"></i></li>
-	        									<li><i class="fa fa-star-o"></i></li>
-	        								</ul>
-	        								<ul class="prize__box">
-	        									<li>$111.00</li>
-	        									<li class="old__prize">$220.00</li>
-	        								</ul>
-	        								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-	        								<ul class="cart__action d-flex">
-	        									<li class="cart"><a href="cart.html">Add to cart</a></li>
-	        									<li class="wishlist"><a href="cart.html"></a></li>
-	        									<li class="compare"><a href="cart.html"></a></li>
-	        								</ul>
-
-	        							</div>
-	        						</div> szda boldimi  xa menda bolmayapti ku
-									 hozir togirlemiz qaysilarni ulab boldizz kokdagila hozir 
-	        						<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-	        						<div class="list__view mt--40">
-	        							<div class="thumb">
-	        								<a class="first__img" href="single-product.html"><img src="{% static 'my_app/images/product/5.jpg'%}" alt="product images"></a>
-	        								<a class="second__img animation1" href="single-product.html"><img src="{% static 'my_app/images/product/9.jpg'%}" alt="product images"></a>
-	        							</div>
-	        							<div class="content">
-	        								<h2><a href="single-product.html">Strive Shoulder Pack</a></h2>
-	        								<ul class="rating d-flex">
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li><i class="fa fa-star-o"></i></li>
-	        									<li><i class="fa fa-star-o"></i></li>
-	        								</ul>
-	        								<ul class="prize__box">
-	        									<li>$111.00</li>
-	        									<li class="old__prize">$220.00</li>
-	        								</ul>
-	        								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-	        								<ul class="cart__action d-flex">
-	        									<li class="cart"><a href="cart.html">Add to cart</a></li>
-	        									<li class="wishlist"><a href="cart.html"></a></li>
-	        									<li class="compare"><a href="cart.html"></a></li>
-	        								</ul>
-	        							</div>
-	        						</div>
-	        						<!-- End Single Product -->
+	        						{% endfor %}
 	        					</div>
 	        				</div>
         				</div>

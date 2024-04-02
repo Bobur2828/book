@@ -83,8 +83,14 @@ def portfolio_three_column(request):
     return render(request, 'my_app/portfolio-three-column.html')
 
 def shop_grid(request):
+
+    book = Books.objects.all()
+
+    context = {
+        'book': book
+    }
     
-    return render(request, 'my_app/shop-grid.html')
+    return render(request, 'my_app/shop-grid.html', context)
 
 def shop_left_sidebar(request):
     return render(request, 'my_app/shop-left-sidebar.html')
@@ -194,6 +200,18 @@ def SendMsg(request):
     messages.success(request, (f"Xabaringiz muvaffaqiyatli yuborildi!!!"))
 
     return redirect('books:index',)
+
+
+def Categorys(request, id):
+    book = Books.objects.filter(category_id=id)
+    category = Category.objects.all()
+
+    context = {
+        'book': book,
+        'category': category,
+
+    }
+    return render(request, 'my_app/shop-grid.html', context)
 
 
 def delete_comment(request, comment_id):
