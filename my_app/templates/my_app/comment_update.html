@@ -1,12 +1,11 @@
 {% extends 'base.html'%}
+{% load crispy_forms_tags %}
 {% block content%}
 <body style="background-color:#4BD0F2">
 <div style="margin:300px">
-    <form action="" method="post">
+    <form action="" method="post" class="comment-form">
     {% csrf_token %}
-         <h3> Fikr bildirish: </h3>  {{ form.comment  }}
-        <p style="margin-top:40px"> <h6 style="margin-right:20px"> Baholash: </h6>  {{form.stars_given}}</p>
-
+        {{ form|crispy }}
     <button style="margin-top:30px" type="submit" class="btn btn-success">Saqlash</button>
 </form>
 

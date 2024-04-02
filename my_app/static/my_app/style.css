@@ -8895,3 +8895,10 @@ body {
   border: solid 1px #BA68C8
 >>>>>>> 231767c8e8e5b68e056615262e97e5443e52007e
 }
+
+.comment-form{
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 30px;
+  background-color: #CDD9DD;
+}
