@@ -2,6 +2,15 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from users.models import User
 from django.utils import timezone
+
+
+
+DAVLAT = [
+    ("O'Z", "O'zbekcha"),
+    ("RU","Ruscha"),
+    ("TU","Turkcha"),
+    ("ENG","Inglizcha"),
+]
 class Books(models.Model):
     name=models.CharField(max_length=200, verbose_name='Kitob nomi')
     description=models.TextField(max_length=1000, verbose_name="Kitob haqida ma'lumot")
@@ -11,6 +20,7 @@ class Books(models.Model):
     category = models.ForeignKey('Category', verbose_name='Kategoriyani tanlang', on_delete=models.CASCADE, related_name='books')
     author = models.ForeignKey('Author',verbose_name='Muallifni tanlang', on_delete=models.CASCADE, blank=True, null=True, related_name='author')
     custom_user = models.ForeignKey(User,verbose_name='Muallifni tanlang', on_delete=models.CASCADE, blank=True, null=True, related_name='custom')
+    country = models.CharField(max_length=100, choices=DAVLAT, blank=True, null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     def __str__(self):

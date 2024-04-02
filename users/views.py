@@ -54,7 +54,8 @@ from django.shortcuts import get_object_or_404
 def Yuklash(request):
     context = {
         'category': Category.objects.all(),
-        'author': Author.objects.all()
+        'author': Author.objects.all(),
+        'book': Books.objects.all()
     }
     if request.method == "POST":
         u=request.user.id
@@ -70,6 +71,7 @@ def Yuklash(request):
         description = r['description']
         pdf = f['pdf']
         muallif = r['muallif']
+        country = r['country']
         custom_user=request.user.id
         
         if author == '':
@@ -78,11 +80,12 @@ def Yuklash(request):
             avtor_id = get_object_or_404(Author, id=author_id)
 
             category = get_object_or_404(Category, id=category_id)
-            yaratish = Books.objects.create(category=category, name=name, author=avtor_id, photo=photo, pdf=pdf, description=description,custom_user=custom_user)
+            Books.objects.create(category=category, name=name, author=avtor_id, photo=photo, pdf=pdf, description=description, country=country ,custom_user=custom_user)
+            print(country)
             return redirect('/')
         else:
             category = get_object_or_404(Category, id=category_id)
-            Books.objects.create(category=category, name=name, author_id=author, photo=photo, pdf=pdf, description=description,)
+            Books.objects.create(category=category, name=name, author_id=author, photo=photo, pdf=pdf, description=description,country=country)
             return redirect('/')
     else:
         return render(request, 'yuklash1.html', context)
