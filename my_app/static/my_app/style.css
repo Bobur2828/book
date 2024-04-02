@@ -3402,18 +3402,19 @@ nav.menu ul li a {
 }
 
 .product .product__thumb .new__box {
-  color: #fff;
-  font-size: 10px;
+  color: white;
+  font-size: 15px;
   font-weight: 600;
   line-height: 23px;
   min-width: 82px;
   position: absolute;
-  right: -40px;
+  right: 0px;
   text-align: center;
   text-transform: uppercase;
   top: 0;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
+  background-color:none !important
+
+
 }
 
 .product .product__thumb .new__box::before {
