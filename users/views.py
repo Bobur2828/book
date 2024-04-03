@@ -59,28 +59,28 @@ def upload_book(request):
         'book': Books.objects.all()
     }
     if request.method == "POST":
-        u=request.user.id
         r = request.POST
         f = request.FILES
         category_id, photo, name, author, description, pdf, muallif, country = (
-                                                                                r['category'], f['photo'], r['name'], r['author'], r['description'], 
-                                                                                f['pdf'], r['muallif'], r['country']
-                                                                                )
-        custom_user = request.user.id
-        print(custom_user)
+            r['category'], f['photo'], r['name'], r['author'], r['description'],
+            f['pdf'], r['muallif'], r['country']
+        )
+        custom_user = request.user  # Fetch the user instance instead of ID
         custom_name = request.user.first_name if request.user.first_name else 'Anketasi toldirilmagan'
         if author == '':
             muallif_base = Author.objects.create(name=muallif)
             author_id = muallif_base.id
             avtor_id = get_object_or_404(Author, id=author_id)
             category = get_object_or_404(Category, id=category_id)
-            Books.objects.create(category=category, name=name, author=avtor_id, photo=photo, pdf=pdf, description=description, country=country ,custom_user=custom_user)
+            Books.objects.create(category=category, name=name, author=avtor_id, photo=photo, pdf=pdf,
+                                  description=description, country=country, custom_user=custom_user)
             message = f"Kitob nomi: {name}\n Kitob haqida: {description} \n Foydalanuvchi:{custom_name}"
             asyncio.run(yuklash(message))
             return redirect('/')
         else:
             category = get_object_or_404(Category, id=category_id)
-            Books.objects.create(category=category, name=name, author_id=author, photo=photo, pdf=pdf, description=description,country=country,custom_user=custom_user)
+            Books.objects.create(category=category, name=name, author_id=author, photo=photo, pdf=pdf,
+                                  description=description, country=country, custom_user=custom_user)
             message = f"Kitob nomi: {name}\n Kitob haqida: {description} \n Foydalanuvchi:{custom_name}"
             asyncio.run(yuklash(message))
             return redirect('/')
