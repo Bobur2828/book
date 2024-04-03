@@ -12,6 +12,8 @@ from users.models import User
 from django.views.generic.edit import UpdateView
 from users.telegram import yuklash
 import asyncio
+from django.contrib.auth.decorators import login_required
+
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -24,13 +26,10 @@ def user_login(request):
                 return redirect('books:index')
             else:
                 messages.error(request,("Login yoki parolni notogri kiritdingiz  iltimos qayta urinib koring "))
-
     else:
         form = LoginForm()
-
-
-
     return render(request,'login.html',{'form_login':form})
+
 
 def user_register(request):
     if request.method == 'POST':
@@ -41,19 +40,19 @@ def user_register(request):
             user.set_password(form.cleaned_data['password'])
             user.save()
             messages.success(request,(" Ro'yhatdan o'tish muvaffaqiyatli yakunlandi "))
-            return HttpResponseRedirect(reverse('users:login')) 
-            
+            return HttpResponseRedirect(reverse('users:login'))   
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
 
+
 def user_logout(request):
     logout(request)
     return redirect('books:index')
-
 from django.shortcuts import get_object_or_404
 
-def Yuklash(request):
+@login_required
+def upload_book(request):
     context = {
         'category': Category.objects.all(),
         'author': Author.objects.all(),
@@ -63,38 +62,26 @@ def Yuklash(request):
         u=request.user.id
         r = request.POST
         f = request.FILES
-        print(r)
-        print(u)
-
-        category_id = r['category']
-        photo = f['photo']
-        name = r['name']
-        author = r['author']
-        description = r['description']
-        pdf = f['pdf']
-        muallif = r['muallif']
-        country = r['country']
-        custom_user=request.user.id
-        
+        category_id, photo, name, author, description, pdf, muallif, country = (
+                                                                                r['category'], f['photo'], r['name'], r['author'], r['description'], 
+                                                                                f['pdf'], r['muallif'], r['country']
+                                                                                )
+        custom_user = request.user.id
+        custom_name = request.user.first_name if request.user.first_name else 'Anketasi toldirilmagan'
         if author == '':
             muallif_base = Author.objects.create(name=muallif)
             author_id = muallif_base.id
             avtor_id = get_object_or_404(Author, id=author_id)
-
             category = get_object_or_404(Category, id=category_id)
             Books.objects.create(category=category, name=name, author=avtor_id, photo=photo, pdf=pdf, description=description, country=country ,custom_user=custom_user)
-            message = f'Buyurtma raqami: {"salom"}\n'
-            
-
+            message = f"Kitob nomi: {name}\n Kitob haqida: {description} \n Foydalanuvchi:{custom_name}"
             asyncio.run(yuklash(message))
             return redirect('/')
         else:
             category = get_object_or_404(Category, id=category_id)
             Books.objects.create(category=category, name=name, author_id=author, photo=photo, pdf=pdf, description=description,country=country)
-            message = f'Buyurtma raqami: {"salom"}\n'
-
+            message = f"Kitob nomi: {name}\n Kitob haqida: {description} \n Foydalanuvchi:{custom_name}"
             asyncio.run(yuklash(message))
-
             return redirect('/')
     else:
         return render(request, 'yuklash1.html', context)
