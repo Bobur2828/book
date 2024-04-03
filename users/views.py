@@ -10,6 +10,8 @@ from my_app.models import Category, Books, Author
 import requests
 from users.models import User
 from django.views.generic.edit import UpdateView
+from users.telegram import yuklash
+import asyncio
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -81,11 +83,18 @@ def Yuklash(request):
 
             category = get_object_or_404(Category, id=category_id)
             Books.objects.create(category=category, name=name, author=avtor_id, photo=photo, pdf=pdf, description=description, country=country ,custom_user=custom_user)
-            print(country)
+            message = f'Buyurtma raqami: {"salom"}\n'
+            
+
+            asyncio.run(yuklash(message))
             return redirect('/')
         else:
             category = get_object_or_404(Category, id=category_id)
             Books.objects.create(category=category, name=name, author_id=author, photo=photo, pdf=pdf, description=description,country=country)
+            message = f'Buyurtma raqami: {"salom"}\n'
+
+            asyncio.run(yuklash(message))
+
             return redirect('/')
     else:
         return render(request, 'yuklash1.html', context)
