@@ -20,7 +20,7 @@ async def send_to_all(bot_token, text):
 
 
 # Test qilish
-async def yuklash(text):
+async def send_sms(text):
     bot_token = '6437135033:AAHvK59HsWn_ZzDtCvNRfwARTkGQ8pRUTa0'
     await send_to_all(bot_token, text)
 

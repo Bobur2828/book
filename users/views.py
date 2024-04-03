@@ -10,7 +10,7 @@ from my_app.models import Category, Books, Author
 import requests
 from users.models import User
 from django.views.generic.edit import UpdateView
-from users.telegram import yuklash
+from users.telegram import send_sms
 import asyncio
 from django.contrib.auth.decorators import login_required
 
@@ -23,6 +23,8 @@ def user_login(request):
             if user is not None:
                 login(request,user)
                 messages.success(request,(f" Salom {user.first_name} {user.last_name} sizni yana ko'rib turganimizdan hursandmiz"))
+                message = f"Foydalanuvchi: {user.username}, {user.first_name} saytga kirdi"
+                asyncio.run(send_sms(message))
                 return redirect('books:index')
             else:
                 messages.error(request,("Login yoki parolni notogri kiritdingiz  iltimos qayta urinib koring "))
@@ -40,6 +42,8 @@ def user_register(request):
             user.set_password(form.cleaned_data['password'])
             user.save()
             messages.success(request,(" Ro'yhatdan o'tish muvaffaqiyatli yakunlandi "))
+            message = f"Yangi foydalanuvchi royhatdan otdi "
+            asyncio.run(send_sms(message))
             return HttpResponseRedirect(reverse('users:login'))   
     else:
         form = RegisterForm()
@@ -75,14 +79,14 @@ def upload_book(request):
             Books.objects.create(category=category, name=name, author=avtor_id, photo=photo, pdf=pdf,
                                   description=description, country=country, custom_user=custom_user)
             message = f"Kitob nomi: {name}\n Kitob haqida: {description} \n Foydalanuvchi:{custom_name}"
-            asyncio.run(yuklash(message))
+            asyncio.run(send_sms(message))
             return redirect('/')
         else:
             category = get_object_or_404(Category, id=category_id)
             Books.objects.create(category=category, name=name, author_id=author, photo=photo, pdf=pdf,
                                   description=description, country=country, custom_user=custom_user)
             message = f"Kitob nomi: {name}\n Kitob haqida: {description} \n Foydalanuvchi:{custom_name}"
-            asyncio.run(yuklash(message))
+            asyncio.run(send_sms(message))
             return redirect('/')
     else:
         return render(request, 'yuklash1.html', context)
