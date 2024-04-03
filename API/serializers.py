@@ -33,9 +33,9 @@ class LoginSerializer(serializers.Serializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    book_name = serializers.CharField(source='books.name', read_only=True)
+    book_name = serializers.CharField(source='books.name',)
     user_username = serializers.CharField(source='user.username', read_only=True)
-
+    stars_given=serializers.CharField()
     class Meta:
         model = Comment
-        fields = ['id', 'book_name', 'user_username', 'comment', 'stars_given']
+        fields = ['id', 'book_name', 'user_username', 'comment', 'stars_given',]

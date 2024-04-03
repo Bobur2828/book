@@ -23,7 +23,7 @@ class RegisterForm(forms.ModelForm):
     def clean_username(self):
         username = self.cleaned_data.get('username')
 
-        if len(username)<5 or len(username)>30:
+        if len(username)<2 or len(username)>30:
             raise forms.ValidationError("Username 5 va 30 orasida bo'lishi kerak")
         return username
 

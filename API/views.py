@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import BooksSerializer,LoginSerializer,CommentSerializer
@@ -39,17 +39,38 @@ class BookView(APIView):
         return Response({"message":"deleted succesfully"})
     
 
+                                                #CRUD faqat  royhatdan otgan user qoldirgan commentlarni  CRUD qila oladi holos     
+class CommentCRUD(APIView):
+    permission_classes=(permissions.IsAuthenticatedOrReadOnly,)
+    def get(self, request):
+        comment = Comment.objects.filter(user=request.user)
+        serializer = CommentSerializer(comment, many=True)
+        return Response(serializer.data)
+
+    def put(self, request, id):
+        comment = get_object_or_404(Comment, id=id, user=request.user)
+        book=comment.books.name                         #put qilinganda  kitob nomini soramaslik uchun 
+        request.data['user'] = request.user.id
+        request.data['book_name']=book
+        serializer = CommentSerializer(comment, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
+    def post(self, request):
+        a=request.data
+
+        request.data['user'] = request.user.id
+        serializer = CommentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
     
-class CommentListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    def delete(self, request, id):
+        comment = Comment.objects.get(id=id)
+        comment.delete()
+        return Response({'status': True, 'message': 'Successfully deleted'})
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
-
-class CommentCRUD(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
