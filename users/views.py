@@ -67,6 +67,7 @@ def upload_book(request):
                                                                                 f['pdf'], r['muallif'], r['country']
                                                                                 )
         custom_user = request.user.id
+        print(custom_user)
         custom_name = request.user.first_name if request.user.first_name else 'Anketasi toldirilmagan'
         if author == '':
             muallif_base = Author.objects.create(name=muallif)
@@ -79,7 +80,7 @@ def upload_book(request):
             return redirect('/')
         else:
             category = get_object_or_404(Category, id=category_id)
-            Books.objects.create(category=category, name=name, author_id=author, photo=photo, pdf=pdf, description=description,country=country)
+            Books.objects.create(category=category, name=name, author_id=author, photo=photo, pdf=pdf, description=description,country=country,custom_user=custom_user)
             message = f"Kitob nomi: {name}\n Kitob haqida: {description} \n Foydalanuvchi:{custom_name}"
             asyncio.run(yuklash(message))
             return redirect('/')
