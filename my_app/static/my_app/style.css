@@ -831,21 +831,21 @@ a {
 
 /* Background Image */
 .bg-image--1 {
-  background-image: url(images/bg/1.jpg);
+  background-image: url(images/bg/2.2png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
 }
 
 .bg-image--2 {
-  background-image: url(images/bg/2.jpg);
+  background-image: url(images/bg/2.2.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
 }
 
 .bg-image--3 {
-  background-image: url(images/bg/3.jpg);
+  background-image: url(images/bg/3.33.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -866,7 +866,7 @@ a {
 }
 
 .bg-image--6 {
-  background-image: url(images/bg/6.jpg);
+  background-image: url(images/bg/55.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

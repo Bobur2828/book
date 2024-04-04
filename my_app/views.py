@@ -35,7 +35,12 @@ def index(request):
     return render(request, 'my_app/index.html', context=data)
 
 def about(request):
-    return render(request, 'my_app/about.html')
+    teamm = Ourteam.objects.all()
+
+    context = {
+        'teamm': teamm
+    }
+    return render(request, 'my_app/about.html', context)
 
 
 def blog(request):
