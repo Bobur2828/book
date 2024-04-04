@@ -23,7 +23,7 @@ def user_login(request):
             if user is not None:
                 login(request,user)
                 messages.success(request,(f" Salom {user.first_name} {user.last_name} sizni yana ko'rib turganimizdan hursandmiz"))
-                message = f"Foydalanuvchi: {user.username}, {user.first_name} saytga kirdi"
+                message = f"Foydalanuvchi: Username={user.username}, Foydalanuvchi ismi ={user.first_name} saytga kirdi"
                 asyncio.run(send_sms(message))
                 return redirect('books:index')
             else:
@@ -39,10 +39,11 @@ def user_register(request):
         
         if form.is_valid():
             user = form.save(commit=False)
+            user_nomi=form.cleaned_data['username']
             user.set_password(form.cleaned_data['password'])
             user.save()
             messages.success(request,(" Ro'yhatdan o'tish muvaffaqiyatli yakunlandi "))
-            message = f"Yangi foydalanuvchi royhatdan otdi "
+            message = f"Yangi foydalanuvchi royhatdan otdi username== {user_nomi} "
             asyncio.run(send_sms(message))
             return HttpResponseRedirect(reverse('users:login'))   
     else:
